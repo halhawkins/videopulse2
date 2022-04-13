@@ -1,0 +1,224 @@
+@media screen and (min-width: 880px)
+    and (max-width: 1023px) {
+    .details{
+        flex-direction: row;
+    }
+    .details-left-column{
+        flex: 0 0 20%;
+    }
+    .details-section1{
+        flex: 0 0 80%;
+        padding: 20px;
+        margin-right: 20px;
+        /* background-color: blue; */
+    }
+    .expanded-reviews{
+        display: block;
+    }
+    .mobile-reviews{
+        display: none;
+    }
+    .search-background{
+        display: flex;
+        flex-direction: row;
+        flex-flow: wrap;
+    }
+    .search-result-row{
+        /* max-width: 48%; */
+        flex: 0 0 47%;
+        margin: 10px;
+    }
+    .full-right-column{
+        flex: 0 0 25%;
+        display: none;
+    }
+    .mobile-extra-section{
+        width: 100%;
+        display: inline;
+    }
+    .recommendation-side{
+        display: hide;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 100%;
+        background-color: #000000;
+        padding: 10px;
+    }
+    .details-background{
+      background: linear-gradient(to bottom,   #000000 0%,#1b2a41 100%);
+    }
+    .menu-contents{
+      border: 1px solid yellow;
+      width:250px;
+      display: flex;
+      position: absolute;
+      align-self: flex-end;    
+    }
+
+     .popout-menu-hidden{
+        display: hidden;
+        position: absolute;
+      }
+      .popout-menu-show{
+        display: inline-block;
+      }
+      /*
+      .menu-contents{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        font-size: 1.2em;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        top: 3em;
+      }
+      .menu-entry{
+        color: white;
+      }
+      .menu-entry:hover{
+        background: lightgrey;
+        color: #000000;
+      }
+      .menu-description{
+        color: #ccc;
+        position: relative;
+        left: 10px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+      .menu-description::before{
+        content: " - ";
+      } */
+}
+
+@media screen and (min-width: 1024px) {
+    .details{
+        flex-direction: row;
+    }
+    .details-left-column{
+        flex: 0 0 20%;
+    }
+    .details-section1{
+        flex: 0 0 55%;
+        padding: 20px;
+    }
+    .expanded-reviews{
+        display: block;
+    }
+    .mobile-reviews{
+        display: none;
+    }
+    .search-background{
+        display: flex;
+        flex-direction: row;
+        flex-flow: wrap;
+    }
+    .search-result-row{
+        /* max-width: 48%; */
+        flex: 0 0 47%;
+    }
+    .full-right-column{
+        flex: 0 1 23%;
+        display: inline;
+        position: relative;
+        /* padding-right: 15px; */
+    }
+    .mobile-extra-section{
+        width: 100%;
+        display: none;
+      }
+    .details-modal{
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 3px solid #1e577e;
+        background: white;
+        border-radius: 5px;
+        padding: 10px;     
+    }
+    .recommendation-side{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 95%;
+        background-color: #000000;
+        /* padding: 10px; */
+      }
+      .recommendation-section{
+          display: none;
+      }      
+      .details-background{
+        background: linear-gradient(to bottom,   #000000 0%,#1b2a41 100%);
+      }
+      .menu-contents{
+        border: 1px solid orange;
+        display: flex;
+        background: black;
+        width: 250px;
+        min-height: 250px;
+        position: absolute;
+        right:0;
+      }
+      .popout-menu-hidden{
+        display: hidden;
+        /* position: absolute;
+        top:0px;
+        right: 0;
+        /* height: 100vh; */
+        /* width: 250px; */
+        /* background: #000000; */
+        /* transform: translateX(100%); */
+        /* transition: transform 0.1s ease-in-out; */
+      }
+      .popout-menu-show{
+        display: inline-block;
+        /* transform: translateX(0); */
+        /* float: right; */
+      }/*
+      /* .popout-menu-hidden{
+        display: inline-block;
+        position: absolute;
+        top:0px;
+        left: 100vw;
+        height: 100vh;
+        width: 200px;
+        background: #000000;
+        transform: translateX(100%);
+        transition: transform 0.1s ease-in-out;
+      }
+      .popout-menu-show{
+        transform: translateX(0);
+        float: right;
+      }
+      .menu-contents{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        font-size: 1.2em;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        top: 3em;
+      }
+      .menu-entry{
+        color: white;
+      }
+      .menu-entry:hover{
+        background: lightgrey;
+        color: #000000;
+      }
+      .menu-description{
+        color: #ccc;
+        position: relative;
+        left: 10px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+      .menu-description::before{
+        content: " - ";
+      } */
+
+}
