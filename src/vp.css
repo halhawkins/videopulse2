@@ -1536,6 +1536,9 @@ html{
   background-color: orange;
   color: #000;
 }
+.dlg-content a{
+  color:orange;
+}
 /*---------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------
 */
@@ -1638,6 +1641,7 @@ html{
     align-self: flex-start;
     order:2;
     top: 3em;
+    max-height: calc(100vh - 3em);
   }
     .left-side-container{
         display: none;
@@ -1710,6 +1714,7 @@ html{
     align-self: flex-start;
     order: 1;
     top:  4em;
+    max-height: calc(100vh - 3em);
   }
   .secondary-container{
     flex-direction: row;
@@ -1823,13 +1828,15 @@ html{
   }
   .movie-description{
     flex: 0 0 33%;
-    margin: 1em;
+    margin: 3em;
     padding: 1em;
     background: #0027;
     color: white;
     align-self: flex-start;
     order: 1;
     top:  4em;
+    overflow-y: auto;
+    max-height: calc(100vh - 7em);
   }
     .left-side-container{
         display: block;
@@ -1874,6 +1881,8 @@ html{
     }
     .cast-panel{
       order: 2;
+      margin-top: 3em;
+      max-height: calc(100vh - 7em);
     }
     .related-videos-section{
       order: 2;

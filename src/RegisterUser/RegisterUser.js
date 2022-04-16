@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Component, createRef } from "react";
+import { Component, createRef, useInsertionEffect } from "react";
 import settings from "../settings";
 import checkMark from "../images/green-check.png";
 import noMatch from "../images/cancel.png";
@@ -13,6 +13,8 @@ class RegisterUser extends Component{
         this.emailRef = createRef(null);
         this.passwordRef = createRef(null);
         this.pwdConfirmRef = createRef(null);
+        this.loginMessage = createRef(null);
+        this.contentRef = createRef(null);
         this.state = {
             strengthColor: "#fff0",
             message: "",
@@ -65,6 +67,26 @@ class RegisterUser extends Component{
         })
     }
 
+    submitNewUser = () => {
+        if(this.passwordRef.current.value !== this.pwdConfirmRef.current.value){
+            this.loginMessage.current.innerText = "Passwords do not match";
+        }
+        axios.post(`${settings.api_url}api/create-account`,{
+            name: this.nameRef.current.value,
+            password: this.passwordRef.current.value,
+            email_address: this.emailRef.current.value
+        })
+        .then(res => {
+            if(res.status === 200){
+                this.loginMessage.current.innerText = "";
+                this.contentRef.current.innerHTML = "<strong>Notice: </strong> Please look in your inbox for an email to verify your new account.";
+            }
+            else{
+                this.loginMessage.current.innerText = res.data.message;
+            }
+        });
+    }
+
     confirmPassword = () => {
         let pwd = this.passwordRef.current.value;
         let conf = this.pwdConfirmRef.current.value;
@@ -84,7 +106,7 @@ class RegisterUser extends Component{
                     <div className="login-container">
                         <div className="profile-content">
                         <div className="profile-flex1" id="message-div"></div>
-                        <div className="profile-flex3">
+                        <div className="profile-flex3" ref={this.contentRef}>
                             <div className="pwd-password" style={{color:"#f00"}}>Not setup with API yet.</div>
                             <div className="pwd-password">
                                 <div>Name </div><input ref={this.nameRef} name="name" id="name" type="text" />
@@ -101,7 +123,7 @@ class RegisterUser extends Component{
                                 </div>
                             </div>
                             <div className="pwd-password">
-                                <div className="videopulse-button" onClick={this.submitLogin}>
+                                <div className="videopulse-button" onClick={this.submitNewUser}>
                                     Submit
                                 </div>
                             </div>
@@ -109,7 +131,7 @@ class RegisterUser extends Component{
                                 <input type="checkbox" value="stayLoggedIn" />Keep logged in
                             </div> */}
                             <div className="above-form">{this.state.message}</div>
-                            <div className="above-form" style={{color:"white"}} id="login-message"></div>
+                            <div className="above-form" style={{color:"white"}} id="login-message" ref={this.loginMessage}></div>
                         </div>
                         <div className="profile-flex1"></div>
                         </div>

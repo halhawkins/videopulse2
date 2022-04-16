@@ -23,6 +23,8 @@ import {getParameterByName} from "../util";
 import ListsComponent from "../ListsComponent/ListsComponent";
 import FavoritesDetails from "../FavoritesDetails/FavoritesDetails";
 import RegisterUser from "../RegisterUser/RegisterUser";
+import VerifyAccount from "../VerifyAccount/VerifyAccount";
+
 class AppContent extends Component{
     constructor(props){
         super(props);
@@ -31,6 +33,7 @@ class AppContent extends Component{
         this.url = "";
         this.username = "";
         this.email = "";
+        this.token = "";
         this.region_code = "US";
         this.list_id = getParameterByName("list_id");
         this.q = getParameterByName("q");
@@ -90,6 +93,9 @@ class AppContent extends Component{
         if(this.props.page === "details"){
             this.title = this.mediaDetailsRef.current.getTitle();
         }
+
+        this.email = getParameterByName('email');
+        this.token = getParameterByName('token');
 
         apiClient.get('api/profile')
         .then(response => {
@@ -344,6 +350,17 @@ class AppContent extends Component{
                     <div className="right-side-container"></div>
                 </div>
             )
+        }
+        else if(this.state.page === "verifyaccount"){
+            return(
+                <div className="main-body-container">
+                    <div className="left-side-container"></div>
+                    <div className="middle-content-container left-justify" id="top_banner">
+                        <VerifyAccount token={this.token} email={this.email} />
+                    </div>
+                    <div className="right-side-container"></div>
+                </div>
+            );
         }
         else if(this.state.page === "lists"){
             return(

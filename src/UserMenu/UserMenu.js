@@ -123,7 +123,7 @@ class UserMenu extends Component{
                     </>:
                     <>
                         <div className="menu-item"><a href="?page=login">Log in</a></div>
-                        <div className="menu-item">Register</div>
+                        <div className="menu-item"><a href="?page=register">Register</a></div>
                     </>
                 }
                 </div>
