@@ -1,5 +1,6 @@
 import {Component, createRef } from "react";
 import apiClient from "../api";
+import {isLoggedIn} from "../util";
 
 class ListDialog extends Component{
     constructor(props){
@@ -136,27 +137,43 @@ class ListDialog extends Component{
     }
 
     render = () => {
-        return(
-            <div className="modal-screen">
-                <div className="dialog">
-                    <div className="dlg-title">Manage lists</div>
-                    <div className="dlg-content">
-                        <ul className="dlg-list">
-                            {this.listHtml}
-                        </ul>
-                            <div className="dlg-input" style={{textAlign: "center"}}>
-                                <input ref={this.newListName} type="text" className="hidden-field" />
-                                <div onClick={this.submitNewList} ref={this.newListCheck} className="hidden-field check-sign" title="Submit"></div>
-                                <div onClick={this.cancelNewListButtonHandler} ref={this.newListCancel} className="hidden-field cancel-sign" title="Cancel"></div>
-                                <div onClick={this.newListButtonHandler} ref={this.newListButton} className="videopulse-button">Create new list</div>
-                            </div>
-                            <p></p>
-                        <div tabIndex={"3"} className="videopulse-button" style={{float:"right"}} onClick={this.closeAddToListDlg}>Close</div>
+        if(isLoggedIn()){
+            return(
+                <div className="modal-screen">
+                    <div className="dialog">
+                        <div className="dlg-title">Manage lists</div>
+                        <div className="dlg-content">
+                            <ul className="dlg-list">
+                                {this.listHtml}
+                            </ul>
+                                <div className="dlg-input" style={{textAlign: "center"}}>
+                                    <input ref={this.newListName} type="text" className="hidden-field" />
+                                    <div onClick={this.submitNewList} ref={this.newListCheck} className="hidden-field check-sign" title="Submit"></div>
+                                    <div onClick={this.cancelNewListButtonHandler} ref={this.newListCancel} className="hidden-field cancel-sign" title="Cancel"></div>
+                                    <div onClick={this.newListButtonHandler} ref={this.newListButton} className="videopulse-button">Create new list</div>
+                                </div>
+                                <p></p>
+                            <div tabIndex={"3"} className="videopulse-button" style={{float:"right"}} onClick={this.closeAddToListDlg}>Close</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        )
+            )
+        }
+        else{
+            return (
+                <div className="modal-screen">
+                    <div className="dialog">
+                        <div className="dlg-title">Manage lists</div>
+                        <div className="dlg-content">
+                            <a href="?page=login">Login</a> or <a href="?page=register">Register</a> for a free account to create your own lists.
+                            <p></p>
+                            <div tabIndex={"3"} className="videopulse-button" style={{float:"right"}} onClick={this.closeAddToListDlg}>Close</div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
     }
 }
 export default ListDialog;

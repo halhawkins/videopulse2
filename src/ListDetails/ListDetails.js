@@ -1,3 +1,4 @@
+import { toHaveStyle } from "@testing-library/jest-dom/dist/matchers";
 import axios from "axios";
 import { Component } from "react";
 import ListDialog from "../ListDialog/ListDialog";
@@ -13,7 +14,8 @@ class ListDetails extends Component{
         this.mediaItems = [];
         this.state = {
             mediaID: null,
-            mediaType: null
+            mediaType: null,
+            listName: ""
         }
     }
 
@@ -26,6 +28,9 @@ class ListDetails extends Component{
                     list_data.data.items[i].item_type = 'tvshow';
                 }
                 this.mediaItems = list_data.data.items;
+                this.setState({
+                    listName: list_data.data.list_name
+                })
                 this.forceUpdate();
             });
         });
@@ -34,8 +39,7 @@ class ListDetails extends Component{
     render = () => {
         return (
             <>
-            {/* {this.state.showAddToListDlg?<ListDialog closeDlg={this.closeDlg} mediaID={this.state.mediaID} mediaType={this.state.mediaType} />:<></>} */}
-                <div className="content-title"><h2 className="page-title">List - {getParameterByName("list_name")}</h2></div>                       
+                <div className="content-title"><h2 className="page-title">List - {this.state?.listName}</h2></div>                       
                 {
                     this.mediaItems.length > 0?this.mediaItems.map((item,i) => {
                         return <MediaSummary 

@@ -102,7 +102,7 @@ class PersonDetails extends Component{
             twitter = "";
 
         return (
-            <div className="movie-details-container" style={{marginTop: "2em"}}>
+            <div className="movie-details-container">
                 <div class="movie-details-top">
                     <div class="tabs-container">
                         <div ref={this.castTab} data-view="credits" class={castTabClass} onClick={this.toggleTab}>Credits</div> {/**  tabs-tab-selected */}
