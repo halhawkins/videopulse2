@@ -58,7 +58,6 @@ class RegisterUser extends Component{
         const pwField = this.passwordRef.current.value;
         axios.post(`${settings.api_url}api/pwdscore`,{password:pwField})
         .then(score => {
-            // alert(JSON.stringify(score,null,10));
             this.getStrengthColor(score.data.strength);
             this.setState({
                 strengthScore: score.data.strength,
