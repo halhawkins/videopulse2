@@ -59,7 +59,7 @@ class TrendingMedia extends Component{
                     <div className="content-title"><h2 className="page-title">Trending</h2></div>
                     {items.map((item,i) => {
                             
-                            return <MediaSummary lists={this.props.lists} overview={item.overview} size={"normal"} passThru={() => this.detailsPassThru("details",item.tmdb_id,item.media_type)} key={uniqueID()} mediaID={item.tmdb_id} mediaType={item.media_type} poster_path={item.poster_path} vote_average={item.vote_average} media_name={item.media_name}/>
+                            return <MediaSummary updateLists={this.props.updateLists} lists={this.props.lists} overview={item.overview} size={"normal"} passThru={() => this.detailsPassThru("details",item.tmdb_id,item.media_type)} key={uniqueID()} mediaID={item.tmdb_id} mediaType={item.media_type} poster_path={item.poster_path} vote_average={item.vote_average} media_name={item.media_name}/>
                         })
                     }
                 

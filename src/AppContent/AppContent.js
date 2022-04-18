@@ -139,6 +139,7 @@ class AppContent extends Component{
     }
 
     updateLists = () => {
+        console.log("AppContent updateLists");
         apiClient.get(`${settings.api_url}api/lists`) 
         .then(res => {
             this.setState({

@@ -108,18 +108,8 @@ class MediaSummary extends Component{
         })
 
         .then(()=>{
-            // console.log("about to get lists MediaSummary 100 " + uniqueID())
-            apiClient.get('api/lists')
-            .then(data => {
-                this.listHtml = data.data.map((list,i) => {
-                    return(
-                        <li key={`li-listlist-${i}`}>{this.isInList(list.id,list.items)?list.list_name==='Favorites'&&list.systemList===1?<div key={`li-listlist-${i}`} data-listid={list.id} onClick={this.removeFromList} className="heart-remove" title="Remove from Favorites"></div>:<div key={`div1-listlist-${i}`} data-listid={list.id} onClick={this.removeFromList} className="green-check-mark" title="Remove from list" alt="remove from list"></div>:list.list_name==='Favorites'&&list.systemList===1?<div key={`div2-listlist-${i}`} data-listid={list.id} onClick={this.addToList} className="heart-add" title="Add to Favorites"></div>:<div key={`div3-listlist-${i}`} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}{list.list_name}</li>
-                        )
-                });
-                this.setState({
-                    lists: data.data
-                })
-            })
+            alert(JSON.stringify(this.props,null,10));
+            this.props.updateLists();
         })
     }
 
@@ -133,17 +123,7 @@ class MediaSummary extends Component{
         })
         .then(()=>{
             // console.log("about to get lists MediaSummary 122" + uniqueID())
-            apiClient.get('api/lists')
-            .then(data => {
-                this.listHtml = data.data.map((list,i) => {
-                    return(
-                        <li key={`listli1-${i}`}>{this.isInList(list.id,list.items)?list.list_name==='Favorites'&&list.systemList===1?<div key={`listdiv11-${i}`} data-listid={list.id} onClick={this.removeFromList} className="heart-remove" title="Remove from Favorites"></div>:<div key={`listdiv12-${i}`} data-listid={list.id} onClick={this.removeFromList} className="green-check-mark" title="Remove from list" alt="remove from list"></div>:list.list_name==='Favorites'&&list.systemList===1?<div key={`listdiv13-${i}`} data-listid={list.id} onClick={this.addToList} className="heart-add" title="Add to Favorites"></div>:<div key={`listdiv14-${i}`} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}<a key={`lista1-${i}`} href={`?page=list&list_id=${list.id}`}>{list.list_name}</a></li>
-                        )
-                });
-                this.setState({
-                    lists: data.data
-                })
-            })
+            this.props.updateLists();
         })
     }
 
