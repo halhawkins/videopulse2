@@ -10,7 +10,7 @@ class UserMenu extends Component{
         super(props);
         this.searchForm = createRef(null);
         this.state = {
-            open: false
+            open: true
         }
     }
     getCookie(cname) {
@@ -19,10 +19,10 @@ class UserMenu extends Component{
         let ca = decodedCookie.split(';');
         for(let i = 0; i <ca.length; i++) {
           let c = ca[i];
-          while (c.charAt(0) == ' ') {
+          while (c.charAt(0) === ' ') {
             c = c.substring(1);
           }
-          if (c.indexOf(name) == 0) {
+          if (c.indexOf(name) === 0) {
             return c.substring(name.length, c.length);
           }
         }
@@ -30,10 +30,12 @@ class UserMenu extends Component{
       }
 
     logout = () => {
+        this.props.toggleMenu();
         apiClient.get(`${settings.api_url}sanctum/csrf-cookie`)
             .then(()=>{
             apiClient.post(`${settings.api_url}signout`,{withCredentials:true})//,{},{withCredentials:true}
             .then(data => {
+                console.log("adag erg q qer q gqerg qe dfvq evefq wsseas xca")
                 Cookies.remove('active_session', {expires: 86400, sameSite: 'lax'});
                 this.popout.current.classList.remove('popout-menu-show');
                 this.popout.current.classList.add('popout-menu-hidden');
@@ -98,10 +100,8 @@ class UserMenu extends Component{
     }
 
     render = () => {
-        // let form = [];
-        // if(this.state.open === true){
-        //     this.register();
-        // }
+        console.log("UserMenu 103 ",this.props);
+
         return (
             <div className="user-menu-popup">
                 <div className="user-menu-popup-inner">

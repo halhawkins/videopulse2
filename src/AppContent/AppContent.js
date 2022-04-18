@@ -41,6 +41,7 @@ class AppContent extends Component{
         this.watchProviders = [];
         this.state = {
             page: props.contentScreen,
+            lists: [],
             p: parseInt(this.getParameterByName("p"),10)?this.getParameterByName("p"):1
         }
     }
@@ -110,6 +111,12 @@ class AppContent extends Component{
                 this.username = response.data.user.name;
                 this.email = response.data.user.email;
                 this.region_code = response.data.settings.settings.region_code;
+                apiClient.get(`${settings.api_url}api/lists`) 
+                .then(res => {
+                    this.setState({
+                        lists: res.data
+                    })
+                })
             }
         })
 
@@ -129,6 +136,15 @@ class AppContent extends Component{
     getParameterByName = (name, url = window.location.href) => {
         const params = new URLSearchParams(window.location.search);
         return params.get(name);
+    }
+
+    updateLists = () => {
+        apiClient.get(`${settings.api_url}api/lists`) 
+        .then(res => {
+            this.setState({
+                lists: res.data
+            })
+        });
     }
     
     getUrl = (itemID,itemType,q = null,p = null) => {
@@ -201,12 +217,13 @@ class AppContent extends Component{
     }
 
     render = () => {
+        console.log("lists = ",this.state.lists);
         if(this.state.page === "trending"){
             return(
                 <div className="main-body-container">
                     <div className="left-side-container"></div>
                     <div className="middle-content-container content-room-at-the-top" id="top_banner">
-                        <TrendingMedia region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
+                        <TrendingMedia lists={this.state.lists} updateLists={this.updateLists} region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
                     </div>
                     <div className="right-side-container"></div>
                 </div>
@@ -217,7 +234,7 @@ class AppContent extends Component{
                 <div className="main-body-container">
                     <div className="left-side-container"></div>
                     <div className="middle-content-container content-room-at-the-top" id="top_banner">
-                        <TopRatedTV region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
+                        <TopRatedTV updateLists={this.updateLists} lists={this.state.lists} region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
                     </div>
                     <div className="right-side-container"></div>
                 </div>
@@ -228,7 +245,7 @@ class AppContent extends Component{
                 <div className="main-body-container">
                     <div className="left-side-container"></div>
                     <div className="middle-content-container content-room-at-the-top" id="top_banner">
-                        <PopularTV region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
+                        <PopularTV updateLists={this.updateLists} lists={this.state.lists} region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
                     </div>
                     <div className="right-side-container"></div>
                 </div>
@@ -239,7 +256,7 @@ class AppContent extends Component{
                 <div className="main-body-container">
                     <div className="left-side-container"></div>
                     <div className="middle-content-container content-room-at-the-top" id="top_banner">
-                        <PopularMovies region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
+                        <PopularMovies updateLists={this.updateLists} lists={this.state.lists} region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
                     </div>
                     <div className="right-side-container"></div>
                 </div>
@@ -250,7 +267,7 @@ class AppContent extends Component{
                 <div className="main-body-container">
                     <div className="left-side-container"></div>
                     <div className="middle-content-container content-room-at-the-top" id="top_banner">
-                        <DiscoverComponent region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
+                        <DiscoverComponent updateLists={this.updateLists} lists={this.state.lists} region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
                     </div>
                     <div className="right-side-container"></div>
                 </div>
@@ -261,7 +278,7 @@ class AppContent extends Component{
                 <div className="main-body-container">
                     <div className="left-side-container"></div>
                     <div className="middle-content-container content-room-at-the-top" id="top_banner">
-                        <DiscoverResults region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
+                        <DiscoverResults updateLists={this.updateLists} lists={this.state.lists} region={this.region_code} p={this.state.p} passThru={(screen,itemID,itemType) => this.passThru(screen,itemID,itemType)}/>
                     </div>
                 <div className="right-side-container"></div>
             </div>
@@ -272,7 +289,7 @@ class AppContent extends Component{
                 <div className="main-body-container">
                     <div className="left-side-container"></div>
                     <div className="middle-content-container content-room-at-the-top" id="top_banner">
-                        <ListDetails listName={getParameterByName('list_name')} region={this.region_code} p={this.state.p} list_id={this.list_id}/>
+                        <ListDetails updateLists={this.updateLists} lists={this.state.lists} listName={getParameterByName('list_name')} region={this.region_code} p={this.state.p} list_id={this.list_id}/>
                     </div>
                 <div className="right-side-container"></div>
             </div>
@@ -281,18 +298,18 @@ class AppContent extends Component{
         else if(this.state.page === "details"){
             if(this.props.itemType === "movie"){
                 return <div className="middle-content-container" id="top_banner">
-                            <MovieDetails getRegionCode={this.getRegionCode} watchProviders={this.watchProviders} region={this.region_code} updateTitle={(title) => this.updateTitle(title)} ref={this.mediaDetailsRef} addToList={this.props.addToList} isloggedin={this.props.isloggedin} itemType={this.props.itemType} itemID={this.props.itemID} />
+                            <MovieDetails updateLists={this.updateLists} lists={this.state.lists} getRegionCode={this.getRegionCode} watchProviders={this.watchProviders} region={this.region_code} updateTitle={(title) => this.updateTitle(title)} ref={this.mediaDetailsRef} addToList={this.props.addToList} isloggedin={this.props.isloggedin} itemType={this.props.itemType} itemID={this.props.itemID} />
                         </div>
             }
             else if(this.props.itemType === "person"){
                 return <div className="top-content-div" id="top_banner"><PersonDetails region={this.region_code} updateTitle={(title) => this.updateTitle(title)} ref={this.mediaDetailsRef} addToList={this.props.addToList} isloggedin={this.props.isloggedin} itemType={this.props.itemType} itemID={this.props.itemID} /></div>
             }
             else if(this.props.itemType === 'episode'){
-                return <div getRegionCode={this.getRegionCode} className="top-content-div" id="top_banner"><TVEpisodeDetails watchProviders={this.watchProviders} region={this.region_code} updateTitle={(title) => this.updateTitle(title)} ref={this.mediaDetailsRef} addToList={this.props.addToList} isloggedin={this.props.isloggedin} itemType={this.props.itemType} itemID={this.props.itemID} season={this.episodeSeason} episode={this.episode}/></div>
+                return <div getRegionCode={this.getRegionCode} className="top-content-div" id="top_banner"><TVEpisodeDetails updateLists={this.updateLists} lists={this.state.lists} watchProviders={this.watchProviders} region={this.region_code} updateTitle={(title) => this.updateTitle(title)} ref={this.mediaDetailsRef} addToList={this.props.addToList} isloggedin={this.props.isloggedin} itemType={this.props.itemType} itemID={this.props.itemID} season={this.episodeSeason} episode={this.episode}/></div>
             }
             else{
                 return  <div className="middle-content-container" id="top_banner">
-                            <TVSeriesDetails getRegionCode={this.getRegionCode} watchProviders={this.watchProviders} region={this.region_code} updateTitle={(title) => this.updateTitle(title)} ref={this.mediaDetailsRef} addToList={this.props.addToList} isloggedin={this.props.isloggedin} itemType={this.props.itemType} itemID={this.props.itemID} />
+                            <TVSeriesDetails updateLists={this.updateLists} lists={this.state.lists} getRegionCode={this.getRegionCode} watchProviders={this.watchProviders} region={this.region_code} updateTitle={(title) => this.updateTitle(title)} ref={this.mediaDetailsRef} addToList={this.props.addToList} isloggedin={this.props.isloggedin} itemType={this.props.itemType} itemID={this.props.itemID} />
                         </div>
             }
         }
@@ -301,7 +318,7 @@ class AppContent extends Component{
                 <div className="main-body-container">
                     <div className="left-side-container"></div>
                     <div className="middle-content-container content-room-at-the-topg" id="top_banner">
-                        <SearchResults region={this.region_code} updateSearch={(q,p) => this.updateSearch(q,p)} q={this.q} language={"en-US"} adult={"false"} p={this.props.p} />
+                        <SearchResults updateLists={this.updateLists} lists={this.state.lists} region={this.region_code} updateSearch={(q,p) => this.updateSearch(q,p)} q={this.q} language={"en-US"} adult={"false"} p={this.props.p} />
                     </div>
                     <div className="right-side-container"></div>
                 </div>
@@ -312,7 +329,7 @@ class AppContent extends Component{
                 <div className="main-body-container">
                     <div className="left-side-container"></div>
                     <div className="middle-content-container left-justify" id="top_banner">
-                        <Profile ref={this.profileRef} setWatchProviders={this.setWatchProviders} />
+                        <Profile updateLists={this.updateLists} lists={this.state.lists} ref={this.profileRef} setWatchProviders={this.setWatchProviders} />
                     </div>
                 <div className="right-side-container"></div>
             </div>
@@ -367,7 +384,7 @@ class AppContent extends Component{
                 <div className="main-body-container">
                     <div className="left-side-container"></div>
                     <div className="middle-content-container content-room-at-the-top" id="top_banner">
-                        <ListsComponent />
+                        <ListsComponent updateLists={this.updateLists} lists={this.state.lists}/>
                     </div>
                     <div className="right-side-container"></div>
                 </div>                
@@ -378,7 +395,7 @@ class AppContent extends Component{
                 <div className="main-body-container">
                     <div className="left-side-container"></div>
                     <div className="middle-content-container content-room-at-the-top" id="top_banner">
-                        <FavoritesDetails />
+                        <FavoritesDetails updateLists={this.updateLists} lists={this.state.lists} />
                     </div>
                     <div className="right-side-container"></div>
                 </div>                

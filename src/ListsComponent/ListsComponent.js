@@ -14,14 +14,16 @@ class ListsComponent extends Component{
         }
     }
     componentDidMount = () =>{
-        apiClient.get(settings.api_url+'api/lists')
-        .then(lists_object => {
-
+        
+        // apiClient.get(settings.api_url+'api/lists')
+        // .then(lists_object => {
+        // console.log("lists componentdidmount ", this.props.lists)
             this.setState({
-                lists: lists_object.data,
+                // lists: lists_object.data,
+                lists: this.props.lists,
                 showDeleteBox: false
             });
-        })
+        // })
         this.forceUpdate();
     }
 
@@ -61,6 +63,7 @@ class ListsComponent extends Component{
     }
 
     render = () => {
+        // console.log('lists component = ',this.props);
         const dlg = <div className="modal-screen">
             <div className="dialog"><div className="dlg-title">Delete list</div><div className="dlg-content"><p>Perminantly delete the list &quot;{this.state.deleteListName}&quot;?</p><div tabIndex={"3"} className="videopulse-button" style={{float:"right"}} onClick={this.cancelDeleteList}>Cancel</div><div onClick={this.deleteList} className="videopulse-button" style={{float:"right"}}>Ok</div></div></div>
         </div>

@@ -35,6 +35,7 @@ class App extends Component{
   }
 
   toggleUserMenu = (e) => {
+    console.log("toggleMenu");
     // let showHide = false;
     if(this.state.userMenuVisible){
       this.showMenu = false;
@@ -102,7 +103,7 @@ class App extends Component{
     return (
       <div className="page-container" onClick={this.morepaginators}>
         {
-          this.state.userMenuVisible?<UserMenu showMenu={"show"} />:<></>
+          this.state.userMenuVisible?<UserMenu showMenu={"show"} toggleMenu={() => this.toggleUserMenu()} />:<></>
         }
         {/* <PageShortcuts activeScreen={this.state.contentView}/> */}
 

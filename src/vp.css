@@ -293,6 +293,7 @@ html{
   transition-timing-function: ease-out;
   position: relative;
   font-size: 0.7em;
+  cursor: pointer;
 }
 
 .nav-tab:hover{

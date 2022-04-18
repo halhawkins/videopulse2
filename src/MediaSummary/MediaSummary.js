@@ -25,12 +25,12 @@ class MediaSummary extends Component{
             overview: "",
             rating: 0.0,
             addToList: false,
-            lists: []
+            lists: this.props.lists
         }
     }
 
     componentDidMount = () => {
-        console.log("about to get lists MediaSummary 33 " + uniqueID())
+        // console.log("about to get lists MediaSummary 33 " + uniqueID())
         // apiClient.get('api/lists')
         // .then(listsData => {
         //     this.listHtml = listsData.data.map((list,i) => {
@@ -71,19 +71,29 @@ class MediaSummary extends Component{
     submitNewList = () => {
         apiClient.post('api/list',{list_name: this.newListName.current.value, public: true,show_list_owner: true})
         .then(()=>{
-            console.log("about to get lists MediaSummary 73 " + uniqueID())
-            apiClient.get('api/lists')
-            .then(data => {
-                this.listHtml = data.data.map((list,i) => {
-                    return(
-                        <li key={`li2-listlist-${i}`}>{this.isInList(list.id,list.items)?<div key={`div4-listlist-${i}`} className="green-check-mark" title="Remove from list" alt="remove from list"></div>:<div key={`div5-listlist-${i}`} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}{list.list_name}</li>
-                    )
-                });
-                this.forceUpdate();
-                this.setState({
-                    lists: data.data
-                })
+            // console.log("about to get lists MediaSummary 73 " + uniqueID())
+            // apiClient.get('api/lists')
+            this.listHtml = this.props.lists.map(list => {
+                return(
+                    <li key={uniqueID()}>{this.isInList(list.id, list.items)?<div key={uniqueID()} className="green-check-mark" title="Remove from list"></div>:<div key={uniqueID()} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}{list.list_name}</li>
+                )
             })
+            this.forceUpdate();
+            this.setState({
+                lists: this.props.lists
+            })
+        
+            // .then(data => {
+            //     this.listHtml = data.data.map((list,i) => {
+            //         return(
+            //             <li key={`li2-listlist-${i}`}>{this.isInList(list.id,list.items)?<div key={`div4-listlist-${i}`} className="green-check-mark" title="Remove from list" alt="remove from list"></div>:<div key={`div5-listlist-${i}`} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}{list.list_name}</li>
+            //         )
+            //     });
+            //     this.forceUpdate();
+            //     this.setState({
+            //         lists: data.data
+            //     })
+            // })
         });
     }
 
@@ -98,7 +108,7 @@ class MediaSummary extends Component{
         })
 
         .then(()=>{
-            console.log("about to get lists MediaSummary 100 " + uniqueID())
+            // console.log("about to get lists MediaSummary 100 " + uniqueID())
             apiClient.get('api/lists')
             .then(data => {
                 this.listHtml = data.data.map((list,i) => {
@@ -122,7 +132,7 @@ class MediaSummary extends Component{
             item_type: this.props.mediaType
         })
         .then(()=>{
-            console.log("about to get lists MediaSummary 122" + uniqueID())
+            // console.log("about to get lists MediaSummary 122" + uniqueID())
             apiClient.get('api/lists')
             .then(data => {
                 this.listHtml = data.data.map((list,i) => {

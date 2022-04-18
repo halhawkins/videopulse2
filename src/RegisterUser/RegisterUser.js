@@ -103,11 +103,10 @@ class RegisterUser extends Component{
             return (
                 <>
                     <div className="content-title"><h2 className="page-title">Create Account</h2></div>
-                    <div className="login-container">
+                    <div className="login-container" style={{width: "21.5em"}}>
                         <div className="profile-content">
                         <div className="profile-flex1" id="message-div"></div>
                         <div className="profile-flex3" ref={this.contentRef}>
-                            <div className="pwd-password" style={{color:"#f00"}}>Not setup with API yet.</div>
                             <div className="pwd-password">
                                 <div>Name </div><input ref={this.nameRef} name="name" id="name" type="text" />
                             </div>  
@@ -115,7 +114,7 @@ class RegisterUser extends Component{
                                 <div>Email Address</div><input ref={this.emailRef} name="email" id="email" type="text" />
                             </div>  
                             <div className="pwd-password">
-                                <div>Password</div><input ref={this.passwordRef} onChange={this.checkComplexity} name="password" id="password" type="password" /><div className="pwd-strength" style={{position: "absolute", width: "6em",background: this.state.strengthColor, display: "inline-block", fontSize: "0.8em", color: "#000", padding: "0.3em"}}>{this.state.strengthWording}</div>
+                                <div>Password</div><input ref={this.passwordRef} onChange={this.checkComplexity} name="password" id="password" type="password" style={{marginRight:"0.5em"}}/><div className="pwd-strength" style={{position: "absolute", width: "6em",background: this.state.strengthColor, display: "inline-block", fontSize: "0.8em", color: "#000", padding: "0.3em"}}>{this.state.strengthWording}</div>
                             </div>
                             <div className="pwd-password">
                                 <div>Confirm password</div><input onChange={this.confirmPassword} ref={this.pwdConfirmRef} name="pwd-confirm" id="pwd-confirm" type="password" /><div className="pwd-strength" style={{position: "absolute", width: "6em",display: "inline-block", fontSize: "0.8em", color: "#000", padding: "0.3em"}}>
