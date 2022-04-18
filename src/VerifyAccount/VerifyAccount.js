@@ -56,7 +56,6 @@ class VerifyAccount extends Component{
     }
 
     render() {
-        // alert(JSON.stringify(this.props));
         return(
             <>
                 <div className="content-title"><h2 className="page-title">Verify Account</h2></div>

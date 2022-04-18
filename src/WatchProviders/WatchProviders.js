@@ -76,8 +76,6 @@ class WatchProviders extends Component{
                             sub: sub,
                             format: "4K"
                         });
-                    console.log("SquatchProviders = ",this.state);
-                        
                     });
                     this.forceUpdate();
                 })

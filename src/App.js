@@ -35,8 +35,6 @@ class App extends Component{
   }
 
   toggleUserMenu = (e) => {
-    console.log("toggleMenu");
-    // let showHide = false;
     if(this.state.userMenuVisible){
       this.showMenu = false;
     }
@@ -50,9 +48,6 @@ class App extends Component{
   }
 
   morepaginators = () => {
-    // setState({
-    //   userMenuVisible: this.state.userMenuVisible
-    // })
   }
 
   render = () => {

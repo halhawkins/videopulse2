@@ -144,7 +144,6 @@ class TVEpisodeDetails extends Component {
             videosTabClass = "tabs-tab",
             seasonsTabClass = "tabs-tab",
             reviewsTabClass = "tabs-tab";
-        console.log("tvepisodedetails ",this?.state?.data);
         return (
             /**
              * I've added json-query

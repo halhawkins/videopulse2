@@ -35,7 +35,6 @@ class UserMenu extends Component{
             .then(()=>{
             apiClient.post(`${settings.api_url}signout`,{withCredentials:true})//,{},{withCredentials:true}
             .then(data => {
-                console.log("adag erg q qer q gqerg qe dfvq evefq wsseas xca")
                 Cookies.remove('active_session', {expires: 86400, sameSite: 'lax'});
                 this.popout.current.classList.remove('popout-menu-show');
                 this.popout.current.classList.add('popout-menu-hidden');
@@ -100,8 +99,6 @@ class UserMenu extends Component{
     }
 
     render = () => {
-        console.log("UserMenu 103 ",this.props);
-
         return (
             <div className="user-menu-popup">
                 <div className="user-menu-popup-inner">

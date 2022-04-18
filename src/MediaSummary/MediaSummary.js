@@ -30,20 +30,9 @@ class MediaSummary extends Component{
     }
 
     componentDidMount = () => {
-        // console.log("about to get lists MediaSummary 33 " + uniqueID())
-        // apiClient.get('api/lists')
-        // .then(listsData => {
-        //     this.listHtml = listsData.data.map((list,i) => {
-        //         return(
-        //             <li key={`listlistli-${i}`}>{this.isInList(list.id,list.items)?list.list_name==='Favorites'&&list.systemList===1?<div key={`listlistdiv1-${i}`} data-listid={list.id} onClick={this.removeFromList} className="heart-remove" title="Remove from Favorites"></div>:<div key={`listlistdiv2-${i}`} data-listid={list.id} onClick={this.removeFromList} className="green-check-mark" title="Remove from list" alt="remove from list"></div>:list.list_name==='Favorites'&&list.systemList===1?<div key={`listlistdiv3-${i}`} data-listid={list.id} onClick={this.addToList} className="heart-add" title="Add to Favorites"></div>:<div key={`listlistdiv4-${i}`} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}<a key={`listlista1-${i}`} href={`?page=list&list_id=${list.id}`}>{list.list_name}</a></li>
-        //         )
-        //     });
-            
-            this.setState({
-                title: this.props.media_name,
-                // lists: listsData.data
-            });
-        // });
+        this.setState({
+            title: this.props.media_name,
+        });
     }
 
     clickHandler = (mediaID, mediaType) => {
@@ -71,8 +60,6 @@ class MediaSummary extends Component{
     submitNewList = () => {
         apiClient.post('api/list',{list_name: this.newListName.current.value, public: true,show_list_owner: true})
         .then(()=>{
-            // console.log("about to get lists MediaSummary 73 " + uniqueID())
-            // apiClient.get('api/lists')
             this.listHtml = this.props.lists.map(list => {
                 return(
                     <li key={uniqueID()}>{this.isInList(list.id, list.items)?<div key={uniqueID()} className="green-check-mark" title="Remove from list"></div>:<div key={uniqueID()} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}{list.list_name}</li>
@@ -108,7 +95,6 @@ class MediaSummary extends Component{
         })
 
         .then(()=>{
-            alert(JSON.stringify(this.props,null,10));
             this.props.updateLists();
         })
     }
@@ -122,7 +108,6 @@ class MediaSummary extends Component{
             item_type: this.props.mediaType
         })
         .then(()=>{
-            // console.log("about to get lists MediaSummary 122" + uniqueID())
             this.props.updateLists();
         })
     }

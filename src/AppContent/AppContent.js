@@ -139,7 +139,6 @@ class AppContent extends Component{
     }
 
     updateLists = () => {
-        console.log("AppContent updateLists");
         apiClient.get(`${settings.api_url}api/lists`) 
         .then(res => {
             this.setState({
@@ -218,7 +217,6 @@ class AppContent extends Component{
     }
 
     render = () => {
-        console.log("lists = ",this.state.lists);
         if(this.state.page === "trending"){
             return(
                 <div className="main-body-container">
