@@ -6,7 +6,6 @@ import ReviewsSection from "../ReviewsSection/ReviewsSection";
 import RatingsBar from "../RatingsBar/RatingsBar";
 import RelatedVideos from "../RelatedVideos/RelatedVideos";
 import RecommendationsPanel from "../RecommendationsPanel/RecommendationsPanel";
-import thinPlus from "../images/thin-orange-plus.svg";
 import fbicon from "../images/f_logo_RGB-Blue_1024.png";
 import twittericon from "../images/Twitter social icons - circle - blue.png";
 import ImagesPanel from "../ImagesPanel/ImagesPanel";
@@ -200,6 +199,7 @@ class MovieDetails extends Component{
             <>
             {this.state.addToListDlg?
                 <ListDialog 
+                    lists={this.props.lists}
                     poster_path={this.state.data.poster_path} 
                     media_name={this.state.data.title} 
                     closeDlg={this.closeAddToListDlg} 
