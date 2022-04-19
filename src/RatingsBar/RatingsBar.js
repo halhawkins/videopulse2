@@ -20,7 +20,6 @@ class RatingsBar extends Component{
 
     remainder(score,pointsPerStar){
         let fullstars = 0;
-        // let halfstars = 0;
       
         this.fullstars = Math.floor(score/pointsPerStar);
         this.halfstars = (score-(fullstars*pointsPerStar))%(pointsPerStar)>=10?1:0;

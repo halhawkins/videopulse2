@@ -49,9 +49,6 @@ class LoginPage extends Component{
                                     Submit
                                 </div>
                             </div>
-                            {/* <div className="pwd-password">
-                                <input type="checkbox" value="stayLoggedIn" />Keep logged in
-                            </div> */}
                             <div className="pwd-password" style={{outline:"1px solid orange", color: "orange",padding: "0.3em"}}><a href="?page=forgotpwd">Click if you forgot your password</a></div>
                             <div className="above-form">{this.state.message}</div>
                             <div className="above-form" style={{color:"white"}} id="login-message"></div>
@@ -61,31 +58,6 @@ class LoginPage extends Component{
                     </div>
                 </>
             )
-
-            // let oldstuff =    <div className="pwd-landing-page">
-            //         <div className="pwd-form-flex-container">
-            //             <div className="pwd-side">
-            //             </div>
-            //             <div className="pwd-form">
-            //                 <div className="above-form"></div>
-            //                 <div className="pwd-password">
-            //                     <div>Email Address</div><input name="email" id="email" type="text" />
-            //                 </div>
-            //                     <div className="pwd-password">
-            //                     <div>Password</div><input name="password" id="password" type="password" /></div>
-            //                     <div className="pwd-password">
-            //                     <div className="vp-button" onClick={this.submitLogin}>
-            //                     Submit
-            //                     </div>
-            //                     </div>
-            //                     <div className="above-form">{this.state.message}</div>
-            //                 <div className="above-form" style={{color:"white"}} id="login-message"></div>
-            //             </div>
-            //             <div className="pwd-side"></div>
-            //         </div>
-                    
-            //     </div>
-            // )
     }
 }
 export default LoginPage;

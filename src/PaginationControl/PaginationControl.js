@@ -13,11 +13,6 @@ class PaginationControl extends Component{
         this.forceUpdate();
     }
 
-    componentDidUpdate = (oldProps) => {
-        // this.calculatePages();
-        // this.forceUpdate();
-    }
-
     calculatePages = () => {
         this.control = [];
         this.startPageLink = 1;

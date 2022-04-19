@@ -35,11 +35,6 @@ class TopRatedTV extends Component{
             });    
         }
     }
-    
-    pageNumberCallback = (pageno) => {
-        // this.props.updateSearch(this.props.q,pageno);
-    }
-
 
     componentDidMount = () => {
         let lang;

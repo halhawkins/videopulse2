@@ -1,7 +1,6 @@
 import { Component } from "react";
 import settings from "../settings";
 import axios from "axios";
-import MediaSummary from "../MediaSummary/MediaSummary";
 
 class RecommendationsPanel extends Component{
     constructor(props){
@@ -50,8 +49,8 @@ class RecommendationsPanel extends Component{
                                     </a></div>
                                 
                                 )
-                                // <MediaSummary size="small"key={"item"+item.id} mediaID={item.tmdb_id} desc={item.overview} mediaType={item.media_type} media_name={item.media_name} poster_path={item.poster_path} vote_average={item.vote_average}/>
-                                }):<></>}
+                            }):<></>
+                        }
                 </div>
     }
 

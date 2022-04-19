@@ -105,7 +105,6 @@ class SearchTags extends Component {
       }
 
     onMouseOverHandler = (e) => {
-        // return;
         if(this.props.tagType === "cast" || this.props.tagType === "crew"){
 
             let profile_path;

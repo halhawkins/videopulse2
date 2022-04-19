@@ -33,8 +33,8 @@ class UserMenu extends Component{
         this.props.toggleMenu();
         apiClient.get(`${settings.api_url}sanctum/csrf-cookie`)
             .then(()=>{
-            apiClient.post(`${settings.api_url}signout`,{withCredentials:true})//,{},{withCredentials:true}
-            .then(data => {
+            apiClient.post(`${settings.api_url}signout`,{withCredentials:true})
+            .then(() => {
                 Cookies.remove('active_session', {expires: 86400, sameSite: 'lax'});
                 this.popout.current.classList.remove('popout-menu-show');
                 this.popout.current.classList.add('popout-menu-hidden');

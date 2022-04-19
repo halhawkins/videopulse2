@@ -43,10 +43,6 @@ class ReviewsSection extends Component{
     }
 
     decodeHTML = function (html) {
-        // let r = html.replace("\r\n","<p></p>");
-        // html.split("\n").join("<br />")
-        // var txt = document.createElement('textarea');
-        // txt.innerHTML = html;
         return html;
     };
 
@@ -55,7 +51,6 @@ class ReviewsSection extends Component{
             return <></>
         }
         return (
-            // <div>
                 <div className="reviews-container">
                     <div className="review"><h3>Reviews:</h3></div>
                     

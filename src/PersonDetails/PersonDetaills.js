@@ -69,14 +69,10 @@ class PersonDetails extends Component{
     }
 
     render = () => {
-        let backdrop_path = "";
         let title = "";
 
         if(Object.keys(this.state.data).length > 0){
             title = this.state.data.name;
-        }
-        let backdropStyle = {
-            background: "linear-gradient(to bottom,   #000000 0%,#1b2a41 100%)"
         }
         this.creds = [];
         let castTabClass = "tabs-tab",

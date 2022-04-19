@@ -4,7 +4,7 @@ import apiClient from "../api";
 import FormData from "form-data";
 import defaultImage from "../images/default-profile-icon-24.jpg";
 import settings from "../settings";
-// import fs from "fs";
+
 class Profile extends Component{
     constructor(props){
         super(props);
@@ -55,11 +55,7 @@ class Profile extends Component{
                 .then(res => {
                     let region_code = res.data.country_code;
                     let watch_providers = response.data.settings.settings.watch_providers;
-                    // const config = {
-                    //     headers: {
-                    //         "content-type": "multipart/form-data"
-                    //     }
-                    // };
+
                     apiClient.post(`${settings.api_url}api/user/region`,{region_code: region_code})
                     .then(
                         resp => {
@@ -95,15 +91,13 @@ class Profile extends Component{
                 .then(data => {
                     this.props.setWatchProviders(watch_providers);
 
-                        this.setState({
-                                    lists: data.data,
-                                    username: response.data.user.name,
-                                    email: response.data.user.email,
-                                    region_code: response.data.settings.settings.region_code,
-                                    avatar_image: response.data.settings.avatar_image === null?defaultImage:`${settings.api_url}images/${response.data.settings.settings.settings.avatar_image}`
-                                })
-                            // }
-                    // });
+                    this.setState({
+                                lists: data.data,
+                                username: response.data.user.name,
+                                email: response.data.user.email,
+                                region_code: response.data.settings.settings.region_code,
+                                avatar_image: response.data.settings.avatar_image === null?defaultImage:`${settings.api_url}images/${response.data.settings.settings.settings.avatar_image}`
+                            })
                 });
             }
             this.forceUpdate();

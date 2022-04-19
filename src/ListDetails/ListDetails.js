@@ -1,10 +1,7 @@
-import { toHaveStyle } from "@testing-library/jest-dom/dist/matchers";
 import axios from "axios";
 import { Component } from "react";
-import ListDialog from "../ListDialog/ListDialog";
 import MediaSummary from "../MediaSummary/MediaSummary";
 import settings from "../settings";
-import { getParameterByName } from "../util";
 
 class ListDetails extends Component{
 

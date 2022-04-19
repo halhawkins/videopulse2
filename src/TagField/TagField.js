@@ -132,10 +132,6 @@ class TagField extends Component {
         this.personProfileSummaryRef.current.style.top = (parseInt(e.pageY,10)+32) + "px"; 
     }
 
-    // componentWillUnmount = () => {
-    //     this.hidePersonProfile();
-    // }
-
     showPersonProfile = (value) => {
         let hoverData = {}; 
         this.currentProfile = value;

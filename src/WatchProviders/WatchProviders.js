@@ -84,7 +84,6 @@ class WatchProviders extends Component{
     }
 
     getLogo = (id) => {
-        let logoURL = "";
         let provider = this.state?.sources?.find(logoItem => {
             return logoItem.id === id?true:false;
         })

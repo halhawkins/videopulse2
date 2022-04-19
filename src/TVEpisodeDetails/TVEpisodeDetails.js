@@ -2,12 +2,8 @@ import { Component } from "react";
 import { createRef} from "react";
 import settings from "../settings";
 import MovieCast from "../MovieCast/MovieCast";
-import thinPlus from "../images/thin-orange-plus.svg";
 import ReviewsSection from "../ReviewsSection/ReviewsSection";
 import RatingsBar from "../RatingsBar/RatingsBar";
-import TVSeasons from "../TVSeasons/TVSeasons";
-import TVSeason from "../TVSeason/TVSeason";
-import RelatedVideos from "../RelatedVideos/RelatedVideos";
 import {getParameterByName} from "../util";
 import WatchProviders from "../WatchProviders/WatchProviders";
 import ListDialog from "../ListDialog/ListDialog";
@@ -95,11 +91,6 @@ class TVEpisodeDetails extends Component {
         this.reviewsDetails.current.children[1].innerHTML = content;
     }
 
-    // uniqueID = () => {
-    //     var id = "id" + Math.random().toString(16).slice(2);
-    //     return id;
-    // }
-
     seasonDetails = (e,name) => {
         this.activeTab = "season";
         this.seasonNumber = e.target.dataset.season;
@@ -120,30 +111,17 @@ class TVEpisodeDetails extends Component {
     }
 
     render = () => {
-        let still_path = "";
         let title = "";
-        let genres = [];
-        // let creators = [];
-        let seasons = [];
 
         if(Object.keys(this.state.data).length > 0){
             title = this.state.data.name;
-            seasons = this.state.seasons;
-            if(typeof(this.state.data.genres) !== 'undefined'){
-                genres = this.state.data.genres;
-            }
-            // if(typeof(this.state.data.created_by) !== 'undefined'){
-            //     creators = this.state.data.created_by;
-            // }
         }
         let backdropStyle = {
             backgroundImage: `url(${settings.backdrop_base}${this.state.data.still_path})`
         }
 
-        let castTabClass = "tabs-tab",
-            videosTabClass = "tabs-tab",
-            seasonsTabClass = "tabs-tab",
-            reviewsTabClass = "tabs-tab";
+        let castTabClass = "tabs-tab";
+
         return (
             /**
              * I've added json-query
@@ -163,11 +141,9 @@ class TVEpisodeDetails extends Component {
 
              <div className="movie-details-container">
                  
-             {/* <div className="details-flex"> className="details-masthead"*/}
              <div className="movie-details-top" style={backdropStyle}>
                  <div className="tabs-container">
                      <div ref={this.castTab} data-view="cast" className={castTabClass} onClick={this.toggleTab}>Cast &amp; Crew</div> {/**  tabs-tab-selected */}
-                     {/* <div ref={this.reviewsTab} data-view="reviews" className={reviewsTabClass} onClick={this.toggleTab}>Reviews</div> */}
                  </div>
                  <div className="movie-description">
                     <div className="add-to-list" title="Add to list" onClick={this.addToList}>+</div>

@@ -144,7 +144,6 @@ class MediaSummary extends Component{
             addToListDialog = <></>
         }
 
-        let sizeClass = "summary-normal-size";
         let poster_path;
         if(this.props.mediaType === 'episode')
             poster_path = this.props.poster_path === null?default_poster:`${settings.backdrop_base}${this.props.poster_path}`;

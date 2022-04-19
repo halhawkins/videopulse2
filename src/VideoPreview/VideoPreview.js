@@ -52,7 +52,7 @@ class VideoPreview extends Component{
 
     render = () => {
         if(this.props.videos !== null){
-            return ( // iframe old className="video-player"
+            return ( 
             <div className="video-preview-component">
   <div className="video-section">
     <div className="video-player">

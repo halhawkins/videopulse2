@@ -20,10 +20,6 @@ class PopularMovies extends Component{
         this.props.passThru(screen,mediaID,mediaType);
     }
 
-    
-    pageNumberCallback = (pageno) => {
-    }
-
     componentDidMount = () => {
         this.pageno = getParameterByName("p") === null?1:getParameterByName("p");
         document.title = "VideoPulse Popular Movies";
@@ -45,7 +41,6 @@ class PopularMovies extends Component{
             return <div></div>
         }
         else
-            // if( === "popularmovies")
             return(
                 <>
                     <div className="content-title"><h2 className="page-title">Popular Movies{this.search}</h2></div>

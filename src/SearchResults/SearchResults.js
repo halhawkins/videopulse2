@@ -1,7 +1,5 @@
 import axios from "axios";
 import { Component } from "react";
-import defaultImg from "../images/default-profile-icon-24.jpg";
-import posterPlaceholder from "../images/poster-placeholder.jpg";
 import PaginationControl from "../PaginationControl/PaginationControl";
 import settings from "../settings";
 import MediaSummary from "../MediaSummary/MediaSummary";

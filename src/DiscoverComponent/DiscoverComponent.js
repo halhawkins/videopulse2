@@ -54,36 +54,6 @@ class DiscoverComponent extends Component{
         return !! Cookies.get('active_session');
     }    
 
-    // handleTVMovieToggle = e =>{
-    //     if(this.state.tvormovies === 'tv'){
-    //         this.TVToggle.current.classList.replace("toggle-selected","toggle");
-    //         this.MoviesToggle.current.classList.replace("toggle","toggle-selected");
-    //         this.hasPeople = false;
-    //         this.wcastsection.current.classList.remove("hide");
-    //         this.wcrewsection.current.classList.remove("hide");
-    //         this.wocastsection.current.classList.remove("hide");
-    //         this.wocrewsection.current.classList.remove("hide");
-    //         this.wowatchproviderssection.current.classList.remove("hide");
-    //     }
-    //     else{
-    //         this.MoviesToggle.current.classList.replace("toggle-selected","toggle");
-    //         this.TVToggle.current.classList.replace("toggle","toggle-selected");
-    //         this.hasPeople = true;
-    //         this.wcastsection.current.classList.add("hide");
-    //         this.wcrewsection.current.classList.add("hide");
-    //         this.wocastsection.current.classList.add("hide");
-    //         this.wocrewsection.current.classList.add("hide");
-    //         this.wowatchproviderssection.current.classList.add("hide");
-    //     }
-    //     let text = document.querySelector(".toggle-selected").innerText.toLowerCase();
-    //     if(text === "movies")
-    //         text = "movie"
-    //     this.forceUpdate();
-    //     this.setState({
-    //         tvormovies: text
-    //     })
-    // }
-
     getURL = () => {
         let castURL="", 
             genresURL="", 
@@ -168,7 +138,6 @@ class DiscoverComponent extends Component{
     }
 
     handleTVMovieToggle = e =>{
-        // let tvormovies = this.state.tvormovies;
         if(this.state.tvormovies === 'tv'){
             this.TVToggle.current.classList.replace("toggle-selected","toggle");
             this.MoviesToggle.current.classList.replace("toggle","toggle-selected");

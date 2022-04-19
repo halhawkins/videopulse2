@@ -234,7 +234,6 @@ class MovieDetails extends Component{
                             </div>
                         </div>
                     </div>
-
                 </div>
             </>
         )

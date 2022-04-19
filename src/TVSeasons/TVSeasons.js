@@ -1,5 +1,4 @@
 import { Component } from "react";
-import TVEpisodes from "../TVEpisodes/TVEpisodes";
 import posterPlaceholder from "../images/poster-placeholder.jpg";
 
 class TVSeasons extends Component{
@@ -23,7 +22,7 @@ class TVSeasons extends Component{
         const posterStyle = {
             objectFit: "contain"
         }
-        // var date_format = { year: 'numeric', month: 'long', day: 'numeric' };
+
         return(
             <div className="tvseasons-div"><h3>Seasons</h3>{
                 typeof this.props.seasons !== 'undefined'?this.props.seasons.map((season,si)=>{

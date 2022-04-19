@@ -1,7 +1,6 @@
 import { Component } from "react";
 import VideoPreview from "../VideoPreview/VideoPreview";
 import settings from '../settings';
-// const {google} = require('googleapis');
 
 class RelatedVideos extends Component{
     constructor(props){
@@ -39,13 +38,12 @@ class RelatedVideos extends Component{
             .then(
                 results => {
                     let tmp = results.items.map(item => {
-                        // if(item.kind === "youtube#video") 
-                            return {
-                                id: item.id,
-                                thumbnail: item.snippet.thumbnails.default.url,
-                                title: item.snippet.title,
-                                tags: item.snippet.tags
-                            }
+                        return {
+                            id: item.id,
+                            thumbnail: item.snippet.thumbnails.default.url,
+                            title: item.snippet.title,
+                            tags: item.snippet.tags
+                        }
                     })
                     if(tmp.length > 0)
                     this.setState({
@@ -61,9 +59,7 @@ class RelatedVideos extends Component{
     render = () => {
         return (
             <div className="video-preview-component-container">
-            {/* <div className="related-videos-section"> */}
                 <VideoPreview key="videopreviewComponent" videos={this.state.results}/>
-            {/* </div> */}
             </div>
         )
     }

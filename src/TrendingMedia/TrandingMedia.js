@@ -17,31 +17,11 @@ class TrendingMedia extends Component{
         this.props.passThru(screen,mediaID,mediaType);  
     }
 
-    componentDidUpdate = (prevProps) => {
-        // if(prevProps.p !== this.props.p){
-            
-        //     axios.get(`${settings.api_url}api/trending?p=${this.props.p}`)
-        //     .then(data => {
-        //         this.totalPages = data.data.total_pages;
-        //         this.setState({
-        //             totalPages: data.data.total_pages,
-        //             items: data.data.results
-        //         })
-        //     });    
-        // }
-    }
-    
-    pageNumberCallback = (pageno) => {
-        // this.props.updateSearch(this.props.q,pageno);
-    }
-
-
     componentDidMount = () => {
         axios.get(`${settings.api_url}api/trending?p=${this.props.p}`)
         .then(data => {
             document.title = `VideoPulse - Trending TV, Movies and Personalities`;
             this.totalPages = data.data.total_pages;
-            // this.pagination = 
             this.setState({
                 totalPages: data.data.total_pages,
                 items: data.data.results

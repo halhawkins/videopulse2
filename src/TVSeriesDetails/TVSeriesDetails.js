@@ -3,7 +3,6 @@ import { createRef} from "react";
 import settings from "../settings";
 import MovieCast from "../MovieCast/MovieCast";
 import RecommendationsPanel from "../RecommendationsPanel/RecommendationsPanel";
-import thinPlus from "../images/thin-orange-plus.svg";
 import ReviewsSection from "../ReviewsSection/ReviewsSection";
 import RatingsBar from "../RatingsBar/RatingsBar";
 import TVSeasons from "../TVSeasons/TVSeasons";

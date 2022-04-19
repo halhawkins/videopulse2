@@ -40,8 +40,7 @@ class MovieCast extends Component {
 
     render = () => {
         let castSection, crewSection, creatorsSection, directorsSection;
-        // let moreCast = false;
-        // let moreCrew = false;
+
         if(this.state?.creators?.length > 0){
             creatorsSection = this.state.creators.map((item,i) => {
                 return (
@@ -88,7 +87,6 @@ class MovieCast extends Component {
         if(this?.state?.cast?.length > 0){
             castSection = this.state.cast.map((item,i) => {
                 if(this.state.showAll === false && i > 19){
-                    // moreCast = true;
                     return <></>;
                 }
                 return (
@@ -112,7 +110,6 @@ class MovieCast extends Component {
         if(this?.state?.crew?.length > 0){
             crewSection = this.state.crew.map((crewitem,i) => {
                 if(this.state.showAll === false && i > 19){
-                    // moreCrew = true;
                     return <></>;
                 }
                 return (
