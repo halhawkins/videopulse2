@@ -69,18 +69,6 @@ class MediaSummary extends Component{
             this.setState({
                 lists: this.props.lists
             })
-        
-            // .then(data => {
-            //     this.listHtml = data.data.map((list,i) => {
-            //         return(
-            //             <li key={`li2-listlist-${i}`}>{this.isInList(list.id,list.items)?<div key={`div4-listlist-${i}`} className="green-check-mark" title="Remove from list" alt="remove from list"></div>:<div key={`div5-listlist-${i}`} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}{list.list_name}</li>
-            //         )
-            //     });
-            //     this.forceUpdate();
-            //     this.setState({
-            //         lists: data.data
-            //     })
-            // })
         });
     }
 
@@ -161,7 +149,7 @@ class MediaSummary extends Component{
         if(this.props.mediaType === 'episode')
             poster_path = this.props.poster_path === null?default_poster:`${settings.backdrop_base}${this.props.poster_path}`;
         else
-            poster_path = this.props.poster_path === null?default_poster:`${settings.poster_base}${this.props.poster_path}`;
+            poster_path = this.props.poster_path === null?default_poster:`${settings.sm_poster_base}${this.props.poster_path}`;
         if(this.props.overview === "")
             return <></>
         else

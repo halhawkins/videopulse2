@@ -5,7 +5,7 @@ const settings = {
     tmdb_key: '04d3a899d3689faaca857f2c98f44a44',
     poster_base: "https://image.tmdb.org/t/p/w500",
     backdrop_base: "https://image.tmdb.org/t/p/original",
-    sm_poster_base: "https://image.tmdb.org/t/p/w185"
+    sm_poster_base: "https://image.tmdb.org/t/p/w342"
 }
 
 export default settings;

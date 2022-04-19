@@ -1,6 +1,5 @@
-import { Component, setState } from 'react';
+import { Component } from 'react';
 import AppContent from './AppContent/AppContent';
-import vpLogo from './images/videopulse-white-lg.png';
 import './vp.css';
 import './devices.css';
 import { getParameterByName } from './util';
@@ -80,7 +79,6 @@ class App extends Component{
         
     }
     else{
-      // topSection = <></>
       topSection = 
       <>
       <div className="user-menu" onClick={this.toggleUserMenu}>
@@ -89,18 +87,15 @@ class App extends Component{
           <rect y="30" width="100" height="10" rx="8" fill="currentcolor"></rect>
           <rect y="60" width="100" height="10" rx="8" fill="currentcolor"></rect>
         </svg>
-      {/* {form} */}
       </div>
       <PageShortcuts activeScreen={this.state.contentView}/>
     </>
-{/*   <PageShortcuts activeScreen={this.state.contentView}/> */}
     }
     return (
       <div className="page-container" onClick={this.morepaginators}>
         {
           this.state.userMenuVisible?<UserMenu showMenu={"show"} toggleMenu={() => this.toggleUserMenu()} />:<></>
         }
-        {/* <PageShortcuts activeScreen={this.state.contentView}/> */}
 
         {topSection}
           <AppContent contentScreen={this.state.contentView} itemType={getParameterByName('itemType')} itemID={getParameterByName('itemID')} updateTitle={(title) => this.updateTitle(title)}/>

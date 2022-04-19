@@ -7,7 +7,6 @@ class ListsComponent extends Component{
         super(props);
         this.listPosters = [];
         this.state = {
-            lists: [],
             showDeleteBox: false,
             deleteListID: null,
             deleteListName: ""
@@ -15,10 +14,8 @@ class ListsComponent extends Component{
     }
     componentDidMount = () =>{
         this.setState({
-            lists: this.props.lists,
             showDeleteBox: false
         });
-        this.forceUpdate();
     }
 
     deleteListHandler = (e) => {
@@ -63,7 +60,7 @@ class ListsComponent extends Component{
         return <>
             {this.state.showDeleteBox?dlg:<></>}
             <div className="content-title"><h2 className="page-title">Your Lists</h2></div>
-            {this.state.lists.map(list => {
+            {this.props.lists.map(list => {
                 return(
                     <div className="tvmovielistitem" data-list-name={list.list_name} data-list-id={list.id} onClick={this.showList}>
                         <div className="img-group-container" data-list-name={list.list_name} data-list-id={list.id}>
