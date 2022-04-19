@@ -21,7 +21,7 @@ class ImagesPanel extends Component{
     }
 
     componentDidMount = () => {
-        this.carouselContainer.current.addEventListener("keypress",this.navkeys,null);
+        this.carouselContainer.current.addEventListener("keydown",this.navkeys,null);
         this.carouselContainer.current.focus();
     }
 

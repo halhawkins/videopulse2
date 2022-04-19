@@ -3,6 +3,7 @@
     --my-start-right: -300px;
     --my-end-right: 0;
 }
+
 div section .carousel-container {
     width: 100%;
     height: 40rem;
@@ -11,6 +12,7 @@ div section .carousel-container {
     overflow: hidden;
     border-radius: 0.375rem;
 }
+
 div section .carousel-container .item {
     width: 100%;
     height: 100%;
@@ -18,6 +20,7 @@ div section .carousel-container .item {
     display: none;
     animation: fade 0.3s ease-in-out;
 }
+
 div section .carousel-container .item .numbertext {
     padding: 0.5rem 0.75rem;
     position: absolute;
@@ -28,16 +31,19 @@ div section .carousel-container .item .numbertext {
     color: #f2f2f2;
     background-color: rgba(0, 0, 0, 0.9);
 }
+
 div section .carousel-container .item .image {
     width: 100%;
     height: 100%;
     display: flex;
 }
+
 div section .carousel-container .item .image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
+
 div section .carousel-container .item .text {
     width: 100%;
     padding: 0.625rem 0.9375rem;
@@ -47,11 +53,13 @@ div section .carousel-container .item .text {
     color: #f2f2f2;
     background-color: rgba(0, 0, 0, 0.9);
 }
+
 div section .carousel-container .item .text .title {
     margin: 0.5rem 0 0 0;
     font-size: 1.2rem;
     font-weight: normal;
 }
+
 div section .carousel-container .prev, div section .carousel-container .next {
     width: 1rem;
     height: 1rem;
@@ -65,21 +73,26 @@ div section .carousel-container .prev, div section .carousel-container .next {
     transition: 0.6s ease;
     background-color: #0006;
 }
+
 div section .carousel-container .prev:focus, div section .carousel-container .next:focus, div section .carousel-container .prev:hover, div section .carousel-container .next:hover {
     background-color: rgba(0, 0, 0, 0.9);
 }
+
 div section .carousel-container .prev {
     left: 0.8rem;
 }
+
 div section .carousel-container .next {
     right: 0.8rem;
 }
+
 div section .carousel-container .dots {
     padding: 0.9375rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 div section .carousel-container .dots .dot {
     width: 0.625rem;
     height: 0.625rem;
@@ -90,50 +103,49 @@ div section .carousel-container .dots .dot {
     background-color: #bbb;
     transition: background-color 0.6s ease;
 }
+
 div section .carousel-container .dots .dot:focus, div section .carousel-container .dots .dot:hover {
     background-color: #717171;
 }
+
 .carousel-container-80{
-    /* width: 100%;*/
     height: 100%; 
     max-height: fit-content;
-    /* background-color: chartreuse; */
     overflow: hidden;
     display: flex;
 }
-    .image{
-        /* width: 100%; */
-        /* height: 100%; */
-        /* object-fit: contain; */
-        max-height: contain;
-    }
+
+.image{
+    max-height: contain;
+}
+
 .image img{
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
+
 .image-panel section{
-    /* width: 100%;
-    height: 100%;
-    max-width: 66%; */
     max-height: fit-content;
     overflow: hidden;
     flex: 0 0 auto;
 }
+
 .image-panel section div{
     overflow: hidden;
 }
+
 .slide-right{
     position:relative;
     animation:animateright 0.4s
 }
+
 .image-counter{
     position: absolute;
     display: inline-block;
     background: #000d;
     color: white;
     height: 1.5em;
-    /* width: 2em; */
     border-radius: 10px;
     text-align: center;
     top:2.3em;
@@ -141,13 +153,13 @@ div section .carousel-container .dots .dot:focus, div section .carousel-containe
     padding-left: 2em;
     padding-right: 2em;
 }
+
 .carousel-nav{
     content: '\u232a';
     position: absolute;
     display: inline-block;
     background: #0006;
     color: white;
-    /* font-size: 1.8em; */
     height: 2em;
     width: 2em;
     border-radius: 50%;
@@ -157,17 +169,21 @@ div section .carousel-container .dots .dot:focus, div section .carousel-containe
     line-height: 30px;
     cursor: pointer;
 }
+
 .navright{
     content: '\u232a';
     right: 2.1em;
 }
+
 .navleft{
     content: '\u2329';
     left: 2.1em;
 }
+
 .carousel-nav:hover{
     background-color: #000d;
 }
+
 @keyframes animateright{
     from{
         right:var(--my-start-right);
@@ -175,6 +191,7 @@ div section .carousel-container .dots .dot:focus, div section .carousel-containe
     } 
     to{right:0;opacity:1}
 }
+
 @keyframes fade {
     from {
         opacity: 0.8;
