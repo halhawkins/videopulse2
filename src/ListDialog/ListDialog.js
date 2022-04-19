@@ -59,7 +59,7 @@ class ListDialog extends Component{
             .then(data => {
                 this.listHtml = data.data.map((list,i) => {
                     return(
-                        <li key={`li2-listlist-${i}`}>{this.isInList(list.id,list.items)?<div key={`div4-listlist-${i}`} className="green-check-mark" title="Remove from list" alt="remove from list"></div>:<div key={`div5-listlist-${i}`} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}{list.list_name}</li>
+                        <li key={`li2-listlist-${i}`}>{this.isInList(list.id,list.items)?<div key={`div4-listlist-${i}`} className="green-check-mark" title="Remove from list" alt="remove from list"></div>:<div key={`div5-listlist-${i}`} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}<a key={`listlista1-${i}`} href={`?page=list&list_id=${list.id}`}>{list.list_name}</a></li>
                     )
                 });
                 this.forceUpdate();
@@ -126,7 +126,7 @@ class ListDialog extends Component{
             .then(data => {
                 this.listHtml = data.data.map((list,i) => {
                     return(
-                        <li key={`li-listlist-${i}`}>{this.isInList(list.id,list.items)?list.list_name==='Favorites'&&list.systemList===1?<div key={`li-listlist-${i}`} data-listid={list.id} onClick={this.removeFromList} className="heart-remove" title="Remove from Favorites"></div>:<div key={`div1-listlist-${i}`} data-listid={list.id} onClick={this.removeFromList} className="green-check-mark" title="Remove from list" alt="remove from list"></div>:list.list_name==='Favorites'&&list.systemList===1?<div key={`div2-listlist-${i}`} data-listid={list.id} onClick={this.addToList} className="heart-add" title="Add to Favorites"></div>:<div key={`div3-listlist-${i}`} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}{list.list_name}</li>
+                        <li key={`li-listlist-${i}`}>{this.isInList(list.id,list.items)?list.list_name==='Favorites'&&list.systemList===1?<div key={`li-listlist-${i}`} data-listid={list.id} onClick={this.removeFromList} className="heart-remove" title="Remove from Favorites"></div>:<div key={`div1-listlist-${i}`} data-listid={list.id} onClick={this.removeFromList} className="green-check-mark" title="Remove from list" alt="remove from list"></div>:list.list_name==='Favorites'&&list.systemList===1?<div key={`div2-listlist-${i}`} data-listid={list.id} onClick={this.addToList} className="heart-add" title="Add to Favorites"></div>:<div key={`div3-listlist-${i}`} data-listid={list.id} onClick={this.addToList} className="plus-sign" alt="add to list" title="Add to list" ></div>}<a key={`listlista1-${i}`} href={`?page=list&list_id=${list.id}`}>{list.list_name}</a></li>
                         )
                 });
                 this.setState({
