@@ -42,7 +42,7 @@ class SearchTagsDialog extends Component {
                 break;
             case "keywords":
                 dlgTitle = "Select Keywords";
-                dlgHeight = "225px";
+                dlgHeight = "275px";
                 break;
             case "genres":
                 dlgTitle = "Select Genres";
@@ -54,7 +54,7 @@ class SearchTagsDialog extends Component {
                 break;
         }
         return (
-            <div ref={this.dialogRef} className="dialog" style={{padding: "1em",width:"535px",height:dlgHeight}}>
+            <div ref={this.dialogRef} className="dialog dlg-light" style={{padding: "1em",width:"535px",height:dlgHeight}}>
                 <div className="dlg-title">{dlgTitle}</div>
                     <SearchTags ref={this.searchtags} tagType={this.props.tagType} label={this.props.label}/>
                 <button onClick={this.handleAccept} className="vp-button" style={{position: "absolute", bottom: "0px", marginBottom: "1em", right: "0px", marginRight:"1em"}}>Accept</button>

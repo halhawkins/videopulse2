@@ -210,7 +210,7 @@ class SearchTags extends Component {
             input = <></>
         }
         else{
-            input = <input ref={this.inputControl} onChange={this.changeHandler} type={this.props.tagType}/>
+            input = <input placeholder="Type search terrms." ref={this.inputControl} onChange={this.changeHandler} type={this.props.tagType}/>
         }
 
         return(
@@ -224,7 +224,8 @@ class SearchTags extends Component {
                     <div className="search-tags-container">
                         {input}
 
-                            <div className='tags-listing' ref={this.taglist}>{                        
+                            <div className='tags-listing' ref={this.taglist}>{    
+                                    this.tagData?.length === 0?<div style={{color: "#fff7"}}>Available tags here</div>:                    
                                     this.tagData.map((item,i)=>{
                                         return <div className="taglist-entry" id={item.tmdb_id} data-value={(this.props.tagType === "genres")?item.id:item.tmdb_id} onMouseOver={this.onMouseOverHandler} onMouseLeave={this.onMouseOutHandler} onClick={this.selectTag} data-name={item.name}><div className="tag-label" onClick={this.selectTag}>{item.name}</div></div>
                                     })
