@@ -118,12 +118,10 @@ class Credits extends Component{
         }
         return(
             <div className="cast-panel">
-                {/* <div className="credits-inner-container"> */}
-                    <div><h3>As cast member:</h3></div>
-                    {cast}
-                    <div><h3>As crew member:</h3></div>
-                    {crew}
-                {/* </div> */}
+                <div><h3>As cast member:</h3></div>
+                {cast}
+                <div><h3>As crew member:</h3></div>
+                {crew}
             </div>
         );
     }
