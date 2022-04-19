@@ -1,10 +1,8 @@
 import axios from "axios";
-import { Component, createRef, useInsertionEffect } from "react";
+import { Component, createRef } from "react";
 import settings from "../settings";
 import checkMark from "../images/green-check.png";
 import noMatch from "../images/cancel.png";
-import { toHaveStyle } from "@testing-library/jest-dom/dist/matchers";
-// import Cookies from 'js-cookie';
 
 class RegisterUser extends Component{
     constructor(props){
@@ -98,7 +96,6 @@ class RegisterUser extends Component{
     }
 
     render() {
-            let pstrStyle = {background: this.state.strengthColor}
             return (
                 <>
                     <div className="content-title"><h2 className="page-title">Create Account</h2></div>
@@ -125,9 +122,6 @@ class RegisterUser extends Component{
                                     Submit
                                 </div>
                             </div>
-                            {/* <div className="pwd-password">
-                                <input type="checkbox" value="stayLoggedIn" />Keep logged in
-                            </div> */}
                             <div className="above-form">{this.state.message}</div>
                             <div className="above-form" style={{color:"white"}} id="login-message" ref={this.loginMessage}></div>
                         </div>
