@@ -21,6 +21,8 @@ class TVSeriesDetails extends Component {
         this.country = "US";
         this.selectedSeason =  null;
         this.descriptionDiv = createRef(null);
+        this.castPanel = createRef(null);
+        this.cast = false;
 
         this.state = {
             title: "",
@@ -78,22 +80,43 @@ class TVSeriesDetails extends Component {
                         cast: cast,
                         seasons: seasons,
                         recommendations: recommendations,
-                    })
+                    })            
                 }) 
             }   
         });
     }
 
+    componentDidUpdate = (prevProps)=>{
+        if(this.activeTab === "cast" && this.cast){
+            document.addEventListener("keydown",this.castPanel?.current?.processKey,null);
+            this.cast = true;
+        }
+        if(this.activeTab !== "cast"){
+            this.cast = false;
+            document.removeEventListener("keydown",this.castPanel?.current?.processKey);
+        }
+    }
+
     toggleTab = (e,tab) => {
         let selectedTab = e.target.dataset.view;
+
         if(this.activeTab === selectedTab){
             this.activeTab = null;
         }
         else{
             this.activeTab = selectedTab;
         }
+
+        if(this.activeTab === "cast" && !this.cast){
+            this.castPanel?.current?.focus();
+            document.addEventListener("keydown",this.castPanel?.current?.processKey,null);
+            this.cast = true;
+        }
+        if(this.activeTab !== "cast"){
+            this.cast = false;
+            document.removeEventListener("keydown",this.castPanel?.current?.processKey);
+        }
         this.forceUpdate();
-        
     }
 
     hideDescription = () => {
@@ -159,17 +182,19 @@ class TVSeriesDetails extends Component {
             }
             let twitter = [], facebook = [];
             if(typeof this.state.data.external_ids !== "undefined"){
-                if(this.state.data.external_ids.twitter !== "" && this.state.data.external_ids.twitter !== null)
+                if(this.state.data.external_ids.twitter_id !== null){
                     twitter.push(<a target={"_blank"} href={`https://www.twitter.com/${this.state.data.external_ids.twitter_id}`}><img style={social_icon} src={twittericon} alt="Twitter" title={title+" on Twitter"}/></a>);
-                else
+                }
+                else{
                     twitter.push(<></>);
-                if(this.state.data.external_ids.facebook !== "" && this.state.data.external_ids.facebook !== null)
+                }
+                if(this.state.data.external_ids.facebook_id !== "" && this.state.data.external_ids.facebook_id !== null)
                     facebook.push(<a target={"_blank"} href={`https://www.facebook.com/${this.state.data.external_ids.facebook_id}`}><img style={social_icon} src={fbicon} alt="Facebook" title={title+" on Facebook"} /></a>);
                 else
                     facebook.push(<></>);
             }
             else
-                twitter = "";
+                twitter.push(<></>);
         return (
             /**
              * I've added json-query

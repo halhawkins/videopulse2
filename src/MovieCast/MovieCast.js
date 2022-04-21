@@ -6,6 +6,7 @@ import default_image from "../images/default-profile-icon-24.jpg";
 class MovieCast extends Component {
     constructor(props){
         super(props);
+        this.scrollPos = 0;
         this.castPanel = createRef(null);
     }
     
@@ -36,6 +37,34 @@ class MovieCast extends Component {
 
     show = () => {
         this.castPanel.current.style.display = "flex";
+    }
+
+    focusPanel = () => {
+        this.castPanel.current.focus();
+    }
+
+    processKey = (e) => {
+        if(e.key === "ArrowRight"){
+            this.scroll("r");
+        }
+        if(e.key === "ArrowLeft"){
+            this.scroll("l");
+        }
+    }
+
+    scroll = (rl) => {
+        let panelWidth = this.castPanel?.current?.clientWidth;
+        let scrollWidth = this.castPanel?.current?.scrollWidth;
+
+        if(rl === 'r'){
+            if(this.castPanel.current.lastChild.offsetLeft+419 > this.scrollPos+panelWidth)
+                this.scrollPos = this.scrollPos += 419;
+        }
+        if(rl === 'l'){
+            this.scrollPos = this.scrollPos-419<0?0:this.scrollPos -= 400+19;
+        }
+        this.castPanel.current.scroll({left:this.scrollPos,behavior: "smooth"});
+
     }
 
     render = () => {
@@ -130,12 +159,14 @@ class MovieCast extends Component {
             });
         }
 
-        return <div ref={this.castPanel} className="cast-panel">
+        return <>
+        <div ref={this.castPanel} className="cast-panel">
             {creatorsSection}
             {directorsSection}
             {castSection}
             {crewSection}
         </div>
+        </>
     }
 }
 

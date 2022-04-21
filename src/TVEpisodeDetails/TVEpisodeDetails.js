@@ -12,8 +12,11 @@ class TVEpisodeDetails extends Component {
     constructor(props) {
         super(props);
         this.reviewsDetails = createRef(null);
+        this.castPanel = createRef(null);
         this.country = "US";
         this.selectedSeason =  null;
+        this.activeTab = "";
+        this.cast = false;
         this.state = {
             title: "",
             data: {},
@@ -32,6 +35,17 @@ class TVEpisodeDetails extends Component {
 
     getTitle = () => {
         return this.state.title;
+    }
+
+    componentDidUpdate = () => {
+        if(this.activeTab === "cast" && this.cast){
+            document.addEventListener("keydown",this.castPanel?.current?.processKey,null);
+            this.cast = true;
+        }
+        if(this.activeTab !== "cast"){
+            this.cast = false;
+            document.removeEventListener("keydown",this.castPanel?.current?.processKey,true);
+        }
     }
 
     componentDidMount = () => {
@@ -77,6 +91,9 @@ class TVEpisodeDetails extends Component {
         }
         else{
             this.activeTab = selectedTab;
+        }
+        if(this.activeTab === "cast"){
+            this.cast = true;
         }
         this.forceUpdate();
         

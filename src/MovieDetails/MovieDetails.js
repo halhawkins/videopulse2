@@ -45,9 +45,21 @@ class MovieDetails extends Component{
         return this.state.title;
     }
 
+    componentDidUpdate = () => {
+        if(this.activeTab === "cast" && !this.cast){
+            document.addEventListener("keydown",this.castPanel?.current?.processKey,null);
+            this.cast = true;
+        }
+        if(this.activeTab !== "cast"){
+            this.cast = false;
+            document.removeEventListener("keydown",this.castPanel?.current?.processKey,true);
+        }
+    }
+
     componentDidMount = () => {
         let cast = [];
-        let url = `${settings.api_url}api/details/movie?itemID=${this.props.itemID}`;;
+        let url = `${settings.api_url}api/details/movie?itemID=${this.props.itemID}`;
+
         fetch(
             url
         )
