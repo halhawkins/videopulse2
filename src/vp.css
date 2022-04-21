@@ -1117,6 +1117,11 @@ html{
     align-items: stretch;
     font-weight: normal;
   }
+
+  .tv-episode-name a{
+    color: orange;
+    text-decoration: none;
+  }
   
   .tv-episode-container :nth-child(1) :nth-child(2){
     padding: .3em;

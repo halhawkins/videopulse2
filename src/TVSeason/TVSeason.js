@@ -39,21 +39,23 @@ class TVSeason extends Component{
         const backbuttonStyle = {
             width: "20px",
             height: "20px",
-            display: "inline-block"
+            display: "inline-block",
+            cursor: "pointer"
         }
         const seasonName = typeof this.props.seasonName === "undefined"?"":this.props.seasonName;
         let imageBaseURL = "https://image.tmdb.org/t/p/w500";
         const posterStyle = {
             objectFit: "contain"
         }
+
         if(this.state.episodes)
 
         return (
-            <div className="tvseasons-div"><div style={{display:"flex", justifyContent: "flex-start"}}><div><img src={backArrow} alt="back arrow" style={backbuttonStyle}/></div><div style={{color: "orange", marginLeft: "1em"}}> Back to seasons</div></div><h3 style={{marginTop: "0", marginBottom: "0"}}>{this.state.episodes.name}</h3>
+            <div className="tvseasons-div"><div style={{display:"flex", justifyContent: "flex-start"}}><div onClick={this.props.backToSeasons}><img src={backArrow} alt="back arrow" style={backbuttonStyle}/></div><div onClick={this.props.backToSeasons} style={{color: "orange", marginLeft: "1em", cursor: "pointer"}}> Back to seasons</div></div><h3 style={{marginTop: "0", marginBottom: "0"}}>{this.state.episodes.name}</h3>
                 {
                     typeof this.state.episodes.episodes !== "undefined"?this.state.episodes.episodes.map((item,si) => {
                         return(
-                        <a href={`?page=details&itemType=episode&itemID=${this.props.itemID}&season=${this.props.season}&episode=${item.episode_number}`}>
+                        <a href={`?page=details&itemType=episode&itemID=${this.props.itemID}&season=${this.props.season}&episode=${item.episode_number}&series=${this.props.seriesName}`}>
                             <div data-episode={item.episode_number} data-season={seasonName} className="tv-episode-container summary-small-size" key={`seasons-div1-${si}`}>
                             <div style={posterStyle} key={`seasons-div2-${si}`}>
                                 <div style={posterStyle} key={`seasons-div3-${si}`} data-season={item.episode_number} className="small-poster-div" >

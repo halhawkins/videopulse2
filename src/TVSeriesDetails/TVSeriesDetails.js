@@ -159,6 +159,11 @@ class TVSeriesDetails extends Component {
         this.forceUpdate();
     }
 
+    backToSeasons = () => {
+        this.activeTab = "seasons";
+        this.forceUpdate();
+    }
+
     render = () => {
         let title = "";
 
@@ -233,9 +238,9 @@ class TVSeriesDetails extends Component {
                                 { this.activeTab === "recommendations"?<RecommendationsPanel itemType={this.props.itemType} itemID={this.props.itemID}/>:<></>} 
                                 { this.activeTab === "videos"?<RelatedVideos itemID={this.props.itemID} itemType={this.props.itemType} />:<></>}
                                 { this.activeTab === "images"?<ImagesPanel itemID={this.props.itemID} itemType={this.props.itemType} images={this.state.data.images} />:<></>}
-                                { this.activeTab === "seasons"?<TVSeasons seasonDetails={(e,param1) => {this.seasonDetails(e,param1)}} seasons={this.state.data.seasons} itemID={this.props.itemID} itemType={this.props.itemType} />:<></>}
+                                { this.activeTab === "seasons"?<TVSeasons seriesName={this.state.data.name} seasonDetails={(e,param1) => {this.seasonDetails(e,param1)}} seasons={this.state.data.seasons} itemID={this.props.itemID} itemType={this.props.itemType} />:<></>}
                                 { this.activeTab === "reviews"?<ReviewsSection itemID={this.props.itemID} itemType={this.props.itemType} />:<></>}
-                                { this.activeTab === "season"?<TVSeason itemID={this.props.itemID} season={this.seasonNumber} seasonName={this.seasonName}/>:<></>}
+                                { this.activeTab === "season"?<TVSeason seriesName={this.state.data.name} backToSeasons={this.backToSeasons} itemID={this.props.itemID} season={this.seasonNumber} seasonName={this.seasonName}/>:<></>}
                                 { this.activeTab === 'watchnow'?<WatchProviders region={this.props.getRegionCode()} mediaID={this.props.itemID} mediaType={this.props.itemType}/>:<></>}
                             </div>
                         </div>

@@ -27,7 +27,7 @@ class TVSeasons extends Component{
             <div className="tvseasons-div"><h3>Seasons</h3>{
                 typeof this.props.seasons !== 'undefined'?this.props.seasons.map((season,si)=>{
                     return(
-                        <div data-title={season.name} data-season={season.number} onClick={(e,si) => this.props.seasonDetails(e,si)} className="tv-season-container summary-small-size" key={`seasons-div1-${si}`}>
+                        <div data-title={season.name} data-season={season.number} data-series-name={this.props.seriesName} onClick={(e,si) => this.props.seasonDetails(e,si)} className="tv-season-container summary-small-size" key={`seasons-div1-${si}`}>
                         <div style={posterStyle} key={`seasons-div2-${si}`}>
                             <div style={posterStyle} key={`seasons-div3-${si}`} data-season={season.season_number} className="small-poster-div"> {/*onClick={this.showEpisodes}*/}
                                 <img className="small-poster" style={posterStyle} key={`seasons-img1-${si}`} data-season={season.season_number} src={season.poster_path!==null?imageBaseURL+season.poster_path:posterPlaceholder} alt="season poster" /> {/** onClick={this.showEpisodes} */}

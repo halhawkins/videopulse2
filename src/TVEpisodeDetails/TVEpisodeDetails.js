@@ -138,7 +138,6 @@ class TVEpisodeDetails extends Component {
         }
 
         let castTabClass = "tabs-tab";
-
         return (
             /**
              * I've added json-query
@@ -165,6 +164,7 @@ class TVEpisodeDetails extends Component {
                  <div className="movie-description">
                     <div className="add-to-list" title="Add to list" onClick={this.addToList}>+</div>
                      <em className="movie-details-type">Episode</em>
+                     <div className="tv-episode-name"><a href={`?page=details&itemType=tv&itemID=${this.props.itemID}`} >{getParameterByName("series")}</a></div>
                      <h2>{title}</h2>
                      <p>{this.state.data.overview}</p>  
                      <div className="videopulse-button" onClick={this.watchNow}>Watch Now <span className="darker">|</span> ˅</div><RatingsBar rating={this.state.data.vote_average*10} />
