@@ -63,8 +63,14 @@ class ReviewsSection extends Component{
                             console.log ("todo: Translate urls to hyperlinks in api proxy")
 
                             let content = item.content;
+                            // alert(JSON.stringify(Object.keys(item.author_details),null,10));
+                            const imgStyle = {width:"48px"};
                             retval = (
-                                <div key={`reviews1-${i}`} className="review" id={"reviewDiv"+i}>{item.author}<p></p><p style={{whiteSpace: "pre-line"}}>
+                                <div key={`reviews1-${i}`} className="review" id={"reviewDiv"+i}>
+                                    <img src={`${settings.sm_poster_base}${item?.author_details?.avatar_path}`} style={imgStyle} alt=""/>
+                                    <span className="movie-details-type">{item.author}</span>
+                                    <p></p>
+                                    <p style={{whiteSpace: "pre-line"}}>
                                     {this.decodeHTML(content)}</p>
 
                                 </div>
