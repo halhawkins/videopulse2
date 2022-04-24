@@ -85,13 +85,13 @@ class Credits extends Component{
                         <div style={{display:"flex"}}>
                             <div className="small-poster-div">
                                 <img className="small-poster" src={item.poster_path!==null?`${settings.poster_base}${item.poster_path}`:defaultPoster} style={{height:"120px"}} alt="movie poster"/>
+                            </div>
                                 <div className="cast-crew-item-details">
                                     <div className="media-name">{item.name} {rdate!==""?"(":""}{rdate}{rdate!==""?")":""}</div>
                                     <em style={{color: "orange"}}>{item.job}</em><br/>
                                     {item.overview.length > 90?item.overview.substr(0,90)+"...":item.overview}
 
                                 </div>
-                            </div>
                             </div>
                         </a>
                 }
