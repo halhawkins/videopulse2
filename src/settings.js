@@ -1,5 +1,7 @@
+const currentURL = new URL(window.location.href);
+
 const settings = {
-    api_url: "http://localhost:8000/",
+    api_url: (currentURL.hostname === "localhost"||currentURL.hostname==="127.0.0.1")?"http://localhost:8000/":"https://api.videopulse.tv/",
     you_tube_key: 'AIzaSyCq3nZbjUfe7B3edaDs04EL_Z5hdLh4SFY',
     ipregistry_key: 'cc9k56odsk2lsju7',
     tmdb_key: '04d3a899d3689faaca857f2c98f44a44',
