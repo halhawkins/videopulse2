@@ -629,14 +629,19 @@ html{
     margin: 0;
   }
 
-  .movie-details-top{
-    /* display: flex; 
-    flex: 1 0 auto;
+  /* .movie-details-top{
     position: absolute;
-    width: 100vw;
-    height: 56.2689vw;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
     background-size: cover;
-    min-height: 100%; */
+    padding: 1em 0 0 0;
+    gap: 1em;
+    top: 0;
+    left: 0;
+  } */
+  .movie-details-top {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -652,7 +657,7 @@ html{
     position: relative;
     display: flex;
     max-height: 100%;
-    padding: 1em 1em 1em 3em;
+    /* padding: 1em 1em 1em 3em; */
     margin: 0;  
   }
   .secondary-container{
@@ -722,18 +727,8 @@ html{
     cursor: pointer;
   }
   .movie-description{
-    /* position: relative;
-    width: 90%;
-    margin: 0;
-    padding: 1em;
-    background: #0027;
-    color: white;
-    align-self: flex-start;
-    left: 3em;
-    order: 2;
-    top: 3em; */
 
-    margin: 1em 0 0 1em;;
+    /* margin: 1em 0 0 1em;; */
     padding: 1em;
     background: #0027;
     color: white;
@@ -743,7 +738,10 @@ html{
     order: 2;
     top: 4em;
   }
-  .listing-screen{
+  .movie-description h2,em, span, p{
+      margin-left: 1.5em;
+  }
+.listing-screen{
       /* margin-top: 4em; */
   }
   .movie-details-type{
@@ -779,7 +777,7 @@ html{
     border-radius: 50%;
     cursor: pointer; */
     display: inline-block;
-    color: #ffffffff;
+    color: #fff7;
     top: 20em;
     z-index: 300;
     font-size: 1.1em;
@@ -794,6 +792,17 @@ html{
     text-align: center;
     float: right;
   }
+  .tos-section{
+    color: white;
+    padding: 1.3em;
+  }
+  .tos-section p{
+    font-size: 1.4em;
+  }
+  .tos-section h2{
+    color: orange;
+    font-size: 1.6em;
+  }
   .add-to-list img{
     height: 24px;
     width: 24px;
@@ -805,6 +814,7 @@ html{
   }
   .add-to-list:hover{
     background-color: #000a;
+    color: #fff;
     /* border: #FFA500 1px solid; */
   }
   .videopulse-button{
@@ -830,9 +840,10 @@ html{
   .details-poster-image{
     display: inline-block;
     width: 100%;
-    max-width: 240px;
+    /* max-width: 240px; */
     height:fit-content
   }
+
   .ratings-bar{
     display: inline-block;
     padding: .5em;
@@ -1548,6 +1559,39 @@ html{
 .dlg-content a{
   color:orange;
 }
+.footer-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.footer-div div{
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.footer-div div a{
+  color: orange;
+}
+.about-container{
+  color: white;
+}
+.about-container p{
+  font: 2em;
+}
+.about-container h2{
+  color: orange;
+  position: relative;
+  left: 330px;
+}
+.about-brand-graphic{
+  float: left;
+  margin: 1em;
+  background-color: black;
+  height: 300px;
+}
+.about-brand-graphic img{
+  width: 300px;
+}
+
 /*---------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------
 */
@@ -1583,6 +1627,9 @@ html{
       z-index: 20;
       padding: 1em;
     }  
+    .movie-description{
+      margin: 1em 0 0 0;
+    }
     .dlg-list{
       text-decoration: none;
       list-style: none;
@@ -1592,6 +1639,10 @@ html{
       text-decoration: none;
       color: white;
     }
+    .details-poster-image{
+      max-width: 275px;
+      margin-left: 2em;
+    }  
     .dlg-list div{
       /* background-color: yellow; */
       display: inline-block;
@@ -1642,8 +1693,9 @@ html{
   }
   .movie-description{
     flex: 0 0 33%;
-    display: block;
-    margin: 0 0 0 1em;
+    /* position: absolute; */
+    display: inline-block;
+    margin: 1em 0 0 0;
     padding: 1em;
     background: #0027;
     color: white;
@@ -1651,6 +1703,11 @@ html{
     order:2;
     top: 3em;
     max-height: calc(100vh - 3em);
+    max-width: 50%;
+  }
+  .details-poster-image{
+    max-width: 275px;
+    margin-left: 2em;
   }
     .left-side-container{
         display: none;
@@ -1715,15 +1772,21 @@ html{
     display: block;
   }
   .movie-description{
+    /* position: relative; */
     flex: 0 0 33%;
-    margin: 1em;
+    /* margin: 1em; */
     padding: 1em;
     background: #0027;
     color: white;
     align-self: flex-start;
     order: 1;
-    top:  4em;
+    /* top:  4em; */
     max-height: calc(100vh - 3em);
+    margin-left: 0;
+    margin-top: 1em;
+  }
+  .details-poster-image{
+    max-width: 275px;
   }
   .secondary-container{
     flex-direction: row;

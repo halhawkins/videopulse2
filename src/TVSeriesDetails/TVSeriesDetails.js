@@ -13,6 +13,8 @@ import WatchProviders from "../WatchProviders/WatchProviders";
 import fbicon from "../images/f_logo_RGB-Blue_1024.png";
 import twittericon from "../images/Twitter social icons - circle - blue.png";
 import ListDialog from "../ListDialog/ListDialog";
+import shareIcon from "../images/share.svg";
+import ShareDlg from "../ShareDlg/ShareDlg";
 
 class TVSeriesDetails extends Component {
     constructor(props) {
@@ -25,6 +27,7 @@ class TVSeriesDetails extends Component {
         this.cast = false;
 
         this.state = {
+            shareDlg: false,
             title: "",
             data: {},
             cast: [],
@@ -164,14 +167,63 @@ class TVSeriesDetails extends Component {
         this.forceUpdate();
     }
 
+    share = () => {
+        this.setState({
+            shareDlg: true
+        });
+        this.forceUpdate();
+    }
+
+    closeSharingDlg = () => {
+        this.setState({
+            shareDlg: false
+        });
+        this.forceUpdate();
+    }
+
     render = () => {
         let title = "";
-
         if(Object.keys(this.state.data).length > 0){
             title = this.state.data.name;
         }
         let backdropStyle = {
             backgroundImage: `url(${settings.backdrop_base}${this.state.data.backdrop_path})`
+        }
+        let docHead = document.getElementsByTagName('head')[0];
+        if(document.getElementById("ogimage") === null && typeof this.state.data.backdrop_path !== 'undefined'){
+            let shareThumb = document.createElement("meta");
+            shareThumb.setAttribute('property', 'og:image');
+            shareThumb.setAttribute('content',`${settings.backdrop_base}${this.state.data.backdrop_path}`);
+            shareThumb.setAttribute("id","ogimage");
+            docHead.appendChild(shareThumb);
+        }
+        if(document.getElementById("ogtitle") === null && title !== ""){
+            let shareTitle = document.createElement("meta");
+            shareTitle.setAttribute("property","og:title");
+            shareTitle.setAttribute("content","VideoPulse - " + title);
+            shareTitle.setAttribute("id","ogtitle");
+            docHead.appendChild(shareTitle);
+        }
+        if(document.getElementById("ogurl") === null){
+            let shareURL = document.createElement("meta");
+            shareURL.setAttribute("property","og:url");
+            shareURL.setAttribute("content",window.location.href);
+            shareURL.setAttribute("id","ogurl");
+            docHead.appendChild(shareURL);
+        }
+        if(document.getElementById("ogtype") === null){
+            let shareType = document.createElement("meta");
+            shareType.setAttribute("property","og:type");
+            shareType.setAttribute("content","website");
+            shareType.setAttribute("id","ogtype");
+            docHead.appendChild(shareType);
+        }
+        if(document.getElementById("ogdesc") === null && typeof this.state.data.overview !== 'undefined'){
+            let shareThumb = document.createElement("meta");
+            shareThumb.setAttribute('property', 'og:description');
+            shareThumb.setAttribute('content',this.state.data.overview);
+            shareThumb.setAttribute("id","ogdesc");
+            docHead.appendChild(shareThumb);
         }
 
         let castTabClass = "tabs-tab",
@@ -207,6 +259,7 @@ class TVSeriesDetails extends Component {
              * specifically for getting watch providers matching user settings.
              */
             <>
+            {this.state.shareDlg===true?<ShareDlg close={this.closeSharingDlg}/>:<></>}
             {this.state.addToListDlg?
                 <ListDialog 
                     poster_path={this.state.data.poster_path} 
@@ -227,6 +280,7 @@ class TVSeriesDetails extends Component {
                         <div className="primary-container">
                             <div className="secondary-container">
                                 <div className="movie-description" ref={this.descriptionDiv}>
+                                    <div className="add-to-list" title="Share" onClick={this.share}><img src={shareIcon} style={{width:"22px"}} alt="Share" title="Share"/></div>
                                     <div className="add-to-list" title="Add to list" onClick={this.addToList}>+</div>
                                     <em className="movie-details-type">Series</em><br />
                                     <img className="details-poster-image" src={settings.poster_base+ this.state.data.poster_path} alt="poster" />
