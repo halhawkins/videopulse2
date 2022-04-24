@@ -1910,6 +1910,9 @@ html{
     overflow-y: auto;
     max-height: calc(100vh - 7em);
   }
+  .details-poster-image{
+    max-width: 275px;
+  }
     .left-side-container{
         display: block;
         flex: 0 0 300px;
