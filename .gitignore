@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 src/images/002-facebook.png
 src/images/LI-In-Bug.png
+src/images/share.png
+src/images/icons8-share-30.svg
+src/images/email.png
