@@ -5,6 +5,7 @@ import './devices.css';
 import { getParameterByName } from './util';
 import PageShortcuts from './PageShortcuts/PageShortcuts';
 import UserMenu from './UserMenu/UserMenu';
+import FooterComponent from './FooterComponent/FooterComponent';
 
 class App extends Component{
   constructor(props){
@@ -99,6 +100,7 @@ class App extends Component{
 
         {topSection}
           <AppContent contentScreen={this.state.contentView} itemType={getParameterByName('itemType')} itemID={getParameterByName('itemID')} updateTitle={(title) => this.updateTitle(title)}/>
+          <FooterComponent />
       </div>
     );
   }

@@ -24,6 +24,8 @@ import ListsComponent from "../ListsComponent/ListsComponent";
 import FavoritesDetails from "../FavoritesDetails/FavoritesDetails";
 import RegisterUser from "../RegisterUser/RegisterUser";
 import VerifyAccount from "../VerifyAccount/VerifyAccount";
+import AboutComponent from "../AboutComponent/AboutComponent";
+import TOSComponent from "../TOSComponent/TOSComponent";
 
 class AppContent extends Component{
     constructor(props){
@@ -398,6 +400,28 @@ class AppContent extends Component{
                     </div>
                     <div className="right-side-container"></div>
                 </div>                
+            )
+        }
+        else if(this.state.page === "about"){
+            return(
+                <div className="main-body-container">
+                    <div className="left-side-container"></div>
+                    <div className="middle-content-container content-room-at-the-top">
+                        <AboutComponent />
+                    </div>
+                    <div className="right-side-container"></div>
+                </div>
+            );
+        }
+        else if(this.state.page === "tos"){
+            return(
+                <div className="main-body-container">
+                    <div className="left-side-container"></div>
+                    <div className="middle-content-container content-room-at-the-top">
+                        <TOSComponent />
+                    </div>
+                    <div className="right-side-container"></div>
+                </div>
             )
         }
     }

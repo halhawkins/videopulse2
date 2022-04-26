@@ -446,6 +446,7 @@ html{
     background: orange;
     border: 0 solid orange;
     border-radius: 4px;
+    cursor: pointer;
   }
   .tag-field-container{
     flex: 0 1 33%;
@@ -666,8 +667,19 @@ html{
     overflow-y: auto;
     overflow-x: hidden;
     gap: 1em;  
-    margin-top: 1em;
+    flex: 1 1 100%;
+    /* background-color: yellow; */
+    /* margin-top: 1em; */
+    width: 100vw;
   }
+  .secondary-container::-webkit-scrollbar{
+    width: 0;
+  }
+  .secondary-container::-webkit-scrollbar-track {
+    background: #333;
+    width: 0;
+  }
+  
   .tabs-container{
     /* display: flex;
     flex: 0 0 3em;
@@ -790,6 +802,7 @@ html{
     cursor: pointer;
     top: 0.7em;
     text-align: center;
+    margin-right: 1em;
     float: right;
   }
   .tos-section{
