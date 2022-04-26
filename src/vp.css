@@ -810,7 +810,10 @@ html{
     padding: 1.3em;
   }
   .tos-section p{
-    font-size: 1.4em;
+    font-size: 1.1em;
+  }
+  .tos-section ol{
+    font-size: 1.1em;
   }
   .tos-section h2{
     color: orange;
