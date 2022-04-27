@@ -32,7 +32,9 @@ class RequestPwdReset extends Component{
     render() {
         if(this.state.error === null)
             return (
-                <div className="pwd-landing-page">
+                <>
+                <div className="content-title"><h2 className="page-title">Create Account</h2></div>
+                <div className="login-container" style={{width: "21.5em", backgroundColor: "#0007"}}>
                     <div className="pwd-form-flex-container">
                         <div className="pwd-side">
                         </div>
@@ -53,10 +55,13 @@ class RequestPwdReset extends Component{
                     </div>
                     
                 </div>
+                </>
             )
         else if(this.state.error === true){
             return(
-                <div className="pwd-landing-page">
+                <>
+                <div className="content-title"><h2 className="page-title">Create Account</h2></div>
+                <div className="login-container" style={{width: "21.5em", backgroundColor: "#0007"}}>
                 <div className="pwd-form-flex-container">
                     <div className="pwd-side">
                     </div>
@@ -69,11 +74,14 @@ class RequestPwdReset extends Component{
                 </div>
                 
             </div>
+            </>
             )            
         }
         else if(this.state.error === false){
             return(
-                <div className="pwd-landing-page">
+                <>
+                <div className="content-title"><h2 className="page-title">Create Account</h2></div>
+                <div className="login-container" style={{width: "21.5em", backgroundColor: "#0007"}}>
                 <div className="pwd-form-flex-container">
                     <div className="pwd-side">
                     </div>
@@ -86,6 +94,7 @@ class RequestPwdReset extends Component{
                 </div>
                 
             </div>
+            </>
             )            
         }
     }
