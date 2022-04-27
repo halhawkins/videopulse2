@@ -11,12 +11,19 @@ foreach($cssdir as $str){
 		if(substr($str,strrpos($str,'.'),4) === '.css')
 			$maincss = $str;
 }
-
+error_log("Sfsdfsfddfs ad ");
 if(isset($_REQUEST["page"]) && $_REQUEST["page"] === "details"){
-    if(isset($_REQUEST['itemType']) &&($_REQUEST['itemType'] === 'movie' || $_REQUEST['itemType'] === 'tv')){
+    if(isset($_REQUEST['itemType']) &&($_REQUEST['itemType'] === 'movie' || $_REQUEST['itemType'] === 'tv' || $_REQUEST['itemType'] === 'episode')){
         if(isset($_REQUEST['itemID'])){
+            if(isset($_REQUEST['episode']) ){
+              $url = 'https://api.videopulse.tv/api/metatags?itemType=episode&itemID='.$_REQUEST['itemID'].'&season='.$_REQUEST['season'].'&episode='.$_REQUEST['episode']; 
+              // error_log(__FILE__." ".__LINE__." "."index.php ".$url);
+            }
+            else{
+              $url = 'https://api.videopulse.tv/api/metatags?itemType='.$_REQUEST['itemType'].'&itemID='.$_REQUEST['itemID'];
+            }
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, 'https://api.videopulse.tv/api/metatags?itemType='.$_REQUEST['itemType'].'&itemID='.$_REQUEST['itemID']);
+            curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HEADER, false);
             $results = curl_exec($ch);

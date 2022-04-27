@@ -7,6 +7,8 @@ import RatingsBar from "../RatingsBar/RatingsBar";
 import {getParameterByName} from "../util";
 import WatchProviders from "../WatchProviders/WatchProviders";
 import ListDialog from "../ListDialog/ListDialog";
+import shareIcon from "../images/share.svg";
+import ShareDlg from "../ShareDlg/ShareDlg";
 
 class TVEpisodeDetails extends Component {
     constructor(props) {
@@ -18,6 +20,7 @@ class TVEpisodeDetails extends Component {
         this.activeTab = "";
         this.cast = false;
         this.state = {
+            shareDlg: false,
             title: "",
             data: {},
             cast: [],
@@ -127,6 +130,20 @@ class TVEpisodeDetails extends Component {
         });
     }
 
+    share = () => {
+        this.setState({
+            shareDlg: true
+        });
+        this.forceUpdate();
+    }
+
+    closeSharingDlg = () => {
+        this.setState({
+            shareDlg: false
+        });
+        this.forceUpdate();
+    }
+
     render = () => {
         let title = "";
 
@@ -145,6 +162,7 @@ class TVEpisodeDetails extends Component {
              * specifically for getting watch providers matching user settings.
              */
             <>
+            {this.state.shareDlg===true?<ShareDlg close={this.closeSharingDlg}/>:<></>}
             {this.state.addToListDlg?
             <ListDialog 
                 poster_path={this.state.data.still_path} 
@@ -162,6 +180,7 @@ class TVEpisodeDetails extends Component {
                      <div ref={this.castTab} data-view="cast" className={castTabClass} onClick={this.toggleTab}>Cast &amp; Crew</div> {/**  tabs-tab-selected */}
                  </div>
                  <div className="movie-description">
+                    <div className="add-to-list" title="Share" onClick={this.share}><img src={shareIcon} style={{width:"22px"}} alt="Share" title="Share"/></div>
                     <div className="add-to-list" title="Add to list" onClick={this.addToList}>+</div>
                      <em className="movie-details-type">Episode</em>
                      <div className="tv-episode-name"><a href={`?page=details&itemType=tv&itemID=${this.props.itemID}`} >{getParameterByName("series")}</a></div>
