@@ -369,6 +369,17 @@ class AppContent extends Component{
                 </div>
             )
         }
+        else if(this.state.page === "forgotpwd"){
+            return(
+                <div className="main-body-container">
+                    <div className="left-side-container"></div>
+                    <div className="middle-content-container left-justify" id="top_banner">    
+                        <RequestPwdReset />
+                    </div>
+                    <div className="right-side-container"></div>
+                </div>
+            )
+        }
         else if(this.state.page === "verifyaccount"){
             return(
                 <div className="main-body-container">

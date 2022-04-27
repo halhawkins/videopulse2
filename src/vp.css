@@ -1607,7 +1607,17 @@ html{
 .about-brand-graphic img{
   width: 300px;
 }
-
+.pwd-form-flex-container{
+  color: white;
+}
+.login-container{
+  width: "21.5em";
+  background-color: "#0007";
+  padding: 1em;
+}
+.login-container a{
+  color: orange;
+}
 /*---------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------
 */
