@@ -1,15 +1,25 @@
 import { Component } from "react";
 import apiClient from "../api";
 import settings from "../settings";
+import { uniqueID } from "../util";
 
 class ListsComponent extends Component{
     constructor(props){
         super(props);
         this.listPosters = [];
         this.state = {
+            lists: this.props.lists,
             showDeleteBox: false,
             deleteListID: null,
             deleteListName: ""
+        }
+    }
+
+    componentDidUpdate = (oldProps) => {
+        if(oldProps.lists !== this.props.lists){
+            this.setState({
+                lists: this.props.lists
+            });
         }
     }
     componentDidMount = () =>{
@@ -20,8 +30,10 @@ class ListsComponent extends Component{
 
     deleteListHandler = (e) => {
         e.stopPropagation();
-        let listID = e.target.getAttribute("data-list-id");
+
+        let listID = parseInt(e.target.getAttribute("data-list-id"));
         let listName = e.target.getAttribute("data-list-name");
+
         let idx = this.state.lists.findIndex(obj => {
             return obj.id === listID;
         })
@@ -34,19 +46,21 @@ class ListsComponent extends Component{
         this.forceUpdate();
     }
 
-    deleteList = (e) => {
-        apiClient.delete(`${settings.api_url}api/list/${this.state.deleteListID}`)
+    deleteList = (id) => {
+        apiClient.post(`${settings.api_url}api/list/delete/${this.state.deleteListID}`)
         .then(data => {
             this.setState({
                 showDeleteBox: false
             });
         })
+        this.forceUpdate();
     }
 
     cancelDeleteList = (e) => {
         this.setState({
             showDeleteBox: false
         });
+        this.forceUpdate();
     }
 
     showList = (e) => {
@@ -62,7 +76,7 @@ class ListsComponent extends Component{
             <div className="content-title"><h2 className="page-title">Your Lists</h2></div>
             {this.props.lists.map(list => {
                 return(
-                    <div className="tvmovielistitem" data-list-name={list.list_name} data-list-id={list.id} onClick={this.showList}>
+                    <div key={uniqueID()} className="tvmovielistitem" data-list-name={list.list_name} data-list-id={list.id} onClick={this.showList}>
                         <div className="img-group-container" data-list-name={list.list_name} data-list-id={list.id}>
                             <div data-list-name={list.list_name} data-list-id={list.id} className="img-group-item" style={{backgroundImage: `url(${settings.sm_poster_base}${typeof list.items[0] !== "undefined"?list.items[0].poster_path:""})`}}></div>
                             <div data-list-name={list.list_name} data-list-id={list.id} className="img-group-item" style={{backgroundImage: `url(${settings.sm_poster_base}${typeof list.items[1] !== "undefined"?list.items[1].poster_path:""})`}}>
