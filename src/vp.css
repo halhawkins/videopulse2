@@ -1148,6 +1148,7 @@ html{
   .tv-episode-name a{
     color: orange;
     text-decoration: none;
+    margin-left: 1.5em;
   }
   
   .tv-episode-container :nth-child(1) :nth-child(2){
@@ -1416,7 +1417,8 @@ html{
 .list-delete-button span{
   position: relative;
   top: 4%;
-  left: 25%;
+  /* left: 25%; */
+  right: 75%;
   transform: translate(-50%,-50%);
 }
 
