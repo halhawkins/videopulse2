@@ -11,12 +11,12 @@ foreach($cssdir as $str){
 		if(substr($str,strrpos($str,'.'),4) === '.css')
 			$maincss = $str;
 }
-error_log("Sfsdfsfddfs ad ");
+
 if(isset($_REQUEST["page"]) && $_REQUEST["page"] === "details"){
     if(isset($_REQUEST['itemType']) &&($_REQUEST['itemType'] === 'movie' || $_REQUEST['itemType'] === 'tv' || $_REQUEST['itemType'] === 'episode')){
         if(isset($_REQUEST['itemID'])){
             if(isset($_REQUEST['episode']) ){
-              $url = 'https://api.videopulse.tv/api/metatags?itemType=episode&itemID='.$_REQUEST['itemID'].'&season='.$_REQUEST['season'].'&episode='.$_REQUEST['episode']; 
+              $url = 'https://api.videopulse.tv/api/metatags?itemType=episode&itemID='.$_REQUEST['itemID'].'&season='.$_REQUEST['season'].'&episode='.$_REQUEST['episode'].'&series='.urldecode($_REQUEST['series']); 
               // error_log(__FILE__." ".__LINE__." "."index.php ".$url);
             }
             else{
