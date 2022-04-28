@@ -182,7 +182,7 @@ class TVEpisodeDetails extends Component {
                  <div className="movie-description">
                     <div className="add-to-list" title="Share" onClick={this.share}><img src={shareIcon} style={{width:"22px"}} alt="Share" title="Share"/></div>
                     <div className="add-to-list" title="Add to list" onClick={this.addToList}>+</div>
-                     <em className="movie-details-type">Episode</em>
+                     <em className="movie-details-type">Episode</em><br /><br />
                      <div className="tv-episode-name"><a href={`?page=details&itemType=tv&itemID=${this.props.itemID}`} >{getParameterByName("series")}</a></div>
                      <h2>{title}</h2>
                      <p>{this.state.data.overview}</p>  
