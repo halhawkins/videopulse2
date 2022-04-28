@@ -34,10 +34,6 @@ class ListsComponent extends Component{
         let listID = parseInt(e.target.getAttribute("data-list-id"));
         let listName = e.target.getAttribute("data-list-name");
 
-        let idx = this.state.lists.findIndex(obj => {
-            return obj.id === listID;
-        })
-        this.state.lists.splice(idx,1);
         this.setState({
             deleteListName: listName,
             deleteListID: listID,
@@ -47,6 +43,10 @@ class ListsComponent extends Component{
     }
 
     deleteList = (id) => {
+        let idx = this.state.lists.findIndex(obj => {
+            return obj.id === this.state.deleteListID;
+        })
+        this.state.lists.splice(idx,1);
         apiClient.post(`${settings.api_url}api/list/delete/${this.state.deleteListID}`)
         .then(data => {
             this.setState({
@@ -69,7 +69,7 @@ class ListsComponent extends Component{
 
     render = () => {
         const dlg = <div className="modal-screen">
-            <div className="dialog"><div className="dlg-title">Delete list</div><div className="dlg-content"><p>Perminantly delete the list &quot;{this.state.deleteListName}&quot;?</p><div tabIndex={"3"} className="videopulse-button" style={{float:"right"}} onClick={this.cancelDeleteList}>Cancel</div><div onClick={this.deleteList} className="videopulse-button" style={{float:"right"}}>Ok</div></div></div>
+            <div className="dialog"><div className="dlg-title">Delete list</div><div className="dlg-content"><p>Perminantly delete the list &quot;{this.state.deleteListName}&quot;?</p><div tabIndex={"3"} className="videopulse-button" style={{float:"right", margin:".3em"}} onClick={this.cancelDeleteList}>Cancel</div><div onClick={this.deleteList} className="videopulse-button" style={{float:"right", margin:".3em"}}>Ok</div></div></div>
         </div>
         return <>
             {this.state.showDeleteBox?dlg:<></>}
