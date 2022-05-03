@@ -41,6 +41,17 @@ echo '<!DOCTYPE html>
 <html lang="en"> 
   <head> 
     <meta charset="utf-8" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6Q01Z9TDMY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag(\'js\', new Date());
+
+  gtag(\'config\', \'G-6Q01Z9TDMY\');
+</script>
+
     <link rel="icon" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -56,7 +67,10 @@ echo '<!DOCTYPE html>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57VHMHX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
   </body>
 </html>';
