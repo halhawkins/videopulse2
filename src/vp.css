@@ -185,7 +185,8 @@ html{
     background: #0000007f;
     color: #ADD8E6;
     font-family:Arial, Helvetica, sans-serif;
-    padding: .5em;
+    padding: .25em;
+    font-size: .85em;
 }
 .tvmovieitem a{
     text-decoration: none;
