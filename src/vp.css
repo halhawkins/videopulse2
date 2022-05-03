@@ -136,7 +136,8 @@ html{
     gap: 1em 1em;
     padding: 0 0 1em 0;
     background-color: #0005;
-    min-width: 400px;
+    min-width: 360px;
+    /* min-width: 100%; */
     /* margin-top: 1em; */
     /* padding-left: 2em; */
 }
@@ -1435,7 +1436,7 @@ html{
   padding: 0.20em;
   background-color: #0007;
   border-radius: 80px;
-  right: 0.7em;
+  right: 2.7em;
   cursor: pointer;
   top: 0.7em;
   text-align: center;
@@ -1634,6 +1635,11 @@ html{
   }
   .movie-description p{
     font-size: .8em;
+  }
+}
+@media (max-width: 360px){
+  .add-to-list-button{
+    right: 0.7em;
   }
 }
 @media (min-width: 500px)
