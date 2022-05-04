@@ -5,6 +5,7 @@ class VideoPreview extends Component{
         super(props);
         this.thumbRef = [];
         this.thumbList = createRef(null);
+        this.thumblistRef = createRef(null);
         this.scrollPosition = 0;
         this.state = {
             selected: 0
@@ -32,22 +33,26 @@ class VideoPreview extends Component{
     }
 
     scrollListLeft = () => {
-        let scrollDistance = 130;
-        if(this.scrollPosition >= this.thumbList.current.width-scrollDistance)
-            this.scrollPosition = this.thumbList.current.width-scrollDistance;
-        else
-            this.scrollPosition += scrollDistance;
-        document.getElementById("thumblist").firstChild.scrollTo(this.scrollPosition,0);
+        if(this.scrollPosition <= 0){
+            this.scrollPosition = 0;
+        }
+        let scrollDistance = 126;
+        this.scrollPosition -= scrollDistance;
+        if(this.scrollPosition >= document.getElementById("thumblist").lastChild.offsetLeft)
+            this.scrollPosition = this.thumbList.current.offsetWidth-scrollDistance;
+        document.getElementById("thumblist").style.left = -(this.scrollPosition)+"px";
     }
 
-    scrollListRight = () => {
-
-        let scrollDistance = 130;
+    scrollListRight = (e) => {
+        let lastChildPos = document.getElementById("thumblist").lastChild.offsetLeft - this.scrollPosition;
+        let scrollDistance = 126;
+        if(lastChildPos <= this.thumbList.current.offsetWidth - 126)
+            this.scrollPosition = this.thumbList.current.offsetWidth - 126;
+        this.scrollPosition += scrollDistance;
         if(this.scrollPosition <= 0)
             this.scrollPosition = 0;
-        else
-            this.scrollPosition -= scrollDistance;
-        document.getElementById("thumblist").scrollTo(this.scrollPosition,0);
+            
+        document.getElementById("thumblist").style.left = -(this.scrollPosition)+"px";
     }
 
     render = () => {
@@ -59,10 +64,10 @@ class VideoPreview extends Component{
       <iframe allowFullScreen={true} title="ytplayer" frameBorder="0" src={"https://www.youtube.com/embed/" + this.props.videos[this.state.selected].id}></iframe>
     </div>
     <div className="video-selector">
-     <div onClick={this.scrollListRight} className="thumb-list-left-btn">
+     <div onClick={this.scrollListRight} className="thumb-list-left-btn"><div>◀</div>
      </div>
      <div className="thumb-list-container" ref={this.thumbList}>
-     <div id="thumblist" className="thumb-list">
+     <div ref={this.thumblistRef} id="thumblist" className="thumb-list">
      {
         this.props.videos.map((item,i) => {
             let imgClass = "deselected-thumb"; 
@@ -77,7 +82,7 @@ class VideoPreview extends Component{
     }
     </div>
      </div>
-     <div onClick={this.scrollListLeft} className="thumb-list-right-btn">
+     <div onClick={this.scrollListLeft} className="thumb-list-right-btn"><div>▶</div>
      </div>
     </div>
   </div>          </div>

@@ -960,13 +960,14 @@ html{
     max-width: 100%;
     background: black;
     position: relative;
-    top: 1em;
+    top: 3em;
+    right: 1em;
   }
   .video-player{
        position: relative;
       padding-bottom: 56.25%; /* 16:9 */
       height: 0;
-    
+      /* right: 50px; */
   }
   .video-player iframe {
       position: absolute;
@@ -998,12 +999,35 @@ html{
   .thumb-list-left-btn{
     background: lightgray;
     white-space: nowrap;
+    vertical-align: middle;
     flex: 0 0 32px;
+    cursor: pointer;
+  }
+  .thumb-list-left-btn:hover{
+    background-color: #adadad;
+  }
+  .thumb-list-left-btn div{
+    position: relative;
+    display: inline-block;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
   }
   .thumb-list-right-btn{
     background: lightgray;
     white-space: nowrap;
     flex: 0 0 32px;
+    cursor: pointer;
+  }
+  .thumb-list-right-btn:hover{
+    background-color: #adadad;
+  }
+  .thumb-list-right-btn div{
+    position: relative;
+    display: inline-block;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
   }
   .video-selector img{
     overflow: hidden;
@@ -1012,9 +1036,11 @@ html{
     margin-right: 3px;
   }
   .selected-thumb{
+    cursor: pointer;
     outline: red solid 1px;
   }
   .deselected-thumb{
+    cursor: pointer;
     outline:none;
   }
   .related-videos-section{
