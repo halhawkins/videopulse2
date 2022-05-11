@@ -84,12 +84,16 @@ class Profile extends Component{
                 
                 if(watch_providers.length > 0)
                     this.watch_providers = watch_providers.map((item,i) => {
-                        return <li><img src={item.logo} alt=""/><div>{item.name}<div className="cancel-sign" style={{float: "right"}}></div></div></li>
+                        return <li><img src={item.logo} alt=""/><div>{item.name}<div className="cancel-sign" style={{float: "right", border: "none"}}></div></div></li>
                     });
                     
                 apiClient.get(`${settings.api_url}api/lists`)
                 .then(data => {
                     this.props.setWatchProviders(watch_providers);
+                    apiClient.get(`${settings.api_url}api/subsettings`)
+                    .then(sSSgf => {
+                        
+                    })
 
                     this.setState({
                                 lists: data.data,

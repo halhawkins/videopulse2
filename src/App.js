@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, createRef } from 'react';
 import AppContent from './AppContent/AppContent';
 import './vp.css';
 import './devices.css';
@@ -6,16 +6,22 @@ import { getParameterByName } from './util';
 import PageShortcuts from './PageShortcuts/PageShortcuts';
 import UserMenu from './UserMenu/UserMenu';
 import FooterComponent from './FooterComponent/FooterComponent';
+import SearchBar from './SearchBar/SearchBar';
 
 class App extends Component{
   constructor(props){
     super(props);
     this.showMenu = false;
+    this.appContentRef = createRef(null);
 
     this.state = {
       contentView: "trending",
       userMenuVisible: false
     };
+  }
+
+  setUserName = (name) => {
+    this.userName = name;
   }
 
   componentDidMount = () => {
@@ -24,6 +30,8 @@ class App extends Component{
       content = "trending";
     else
       content = getParameterByName("page");
+    
+    this.userName = this.appContentRef.current.getUserName();
     
     this.setState({
       contentView: content
@@ -75,9 +83,9 @@ class App extends Component{
           <rect y="60" width="100" height="10" rx="8" fill="currentcolor"></rect>
         </svg>
         </div>
+          <SearchBar/>
           <PageShortcuts activeScreen={this.state.contentView}/>
-        </>
-        
+        </>        
     }
     else{
       topSection = 
@@ -89,17 +97,18 @@ class App extends Component{
           <rect y="60" width="100" height="10" rx="8" fill="currentcolor"></rect>
         </svg>
       </div>
+      <SearchBar username={this.userName}/>
       <PageShortcuts activeScreen={this.state.contentView}/>
     </>
     }
     return (
       <div className="page-container" onClick={this.morepaginators}>
         {
-          this.state.userMenuVisible?<UserMenu showMenu={"show"} toggleMenu={() => this.toggleUserMenu()} />:<></>
+          this.state.userMenuVisible?<UserMenu username={this.userName} showMenu={"show"} toggleMenu={() => this.toggleUserMenu()} />:<></>
         }
 
         {topSection}
-          <AppContent contentScreen={this.state.contentView} itemType={getParameterByName('itemType')} itemID={getParameterByName('itemID')} updateTitle={(title) => this.updateTitle(title)}/>
+          <AppContent setname={this.setUserName} ref={this.appContentRef} contentScreen={this.state.contentView} itemType={getParameterByName('itemType')} itemID={getParameterByName('itemID')} updateTitle={(title) => this.updateTitle(title)}/>
           <FooterComponent />
       </div>
     );

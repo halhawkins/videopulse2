@@ -111,6 +111,7 @@ class AppContent extends Component{
             }
             else{
                 this.username = response.data.user.name;
+                this.props.setname(this.username);
                 this.email = response.data.user.email;
                 this.region_code = response.data.settings.settings.region_code;
                 apiClient.get(`${settings.api_url}api/lists`) 
@@ -131,6 +132,9 @@ class AppContent extends Component{
         })
     }
 
+    getUserName = () => {
+        return this.username;
+    }
     getTitle = () => {
         return this.title;
     }

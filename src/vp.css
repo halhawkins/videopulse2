@@ -14,6 +14,8 @@ html{
       ); */
     /* overflow: hidden; */
     --side-tabs: 3.5em;
+    --sb-maxwidth: 280px;
+    --sb-height: 32px;
 
 }
 /* width */
