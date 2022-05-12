@@ -1653,6 +1653,9 @@ html{
 .hero-logo{
   width: 50%;
 }
+.hero{
+  padding: .5em;
+}
  .hero-title{
   display: block;
   position: relative;
