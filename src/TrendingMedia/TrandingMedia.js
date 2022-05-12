@@ -3,6 +3,7 @@ import { Component } from "react";
 import MediaSummary from "../MediaSummary/MediaSummary";
 import settings from "../settings";
 import PaginationControl from "../PaginationControl/PaginationControl";
+import HeroComponent from "../HeroComponent/HeroComponent";
 import { uniqueID } from "../util";
 
 class TrendingMedia extends Component{
@@ -30,13 +31,25 @@ class TrendingMedia extends Component{
     }
     render = () => { 
         let items = this.state.items;
+        let mn = "", bg = "";
+        let mediaID, mediaType;
         
         if(typeof items === "undefined")
             return <></>
         else
+            if(this.state.items.length > 0){
+                bg = items[0]?.backdrop_path;
+                mn = items[0]?.media_name;
+                mediaID=items[0]?.tmdb_id;
+                mediaType=items[0]?.media_type;
+
+            }
+            // console.log(this.state.items);
+            // heroInfo = this.state.items[0]
             return(
                 <>
                     <div className="content-title"><h2 className="page-title">Trending</h2></div>
+                    <HeroComponent pagetype={"trending"} title={mn} backdrop={bg} mediaID={mediaID} mediaType={mediaType}/>
                     {items.map((item,i) => {
                             
                             return <MediaSummary updateLists={this.props.updateLists} lists={this.props.lists} overview={item.overview} size={"normal"} passThru={() => this.detailsPassThru("details",item.tmdb_id,item.media_type)} key={uniqueID()} mediaID={item.tmdb_id} mediaType={item.media_type} poster_path={item.poster_path} vote_average={item.vote_average} media_name={item.media_name}/>

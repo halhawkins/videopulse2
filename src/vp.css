@@ -1647,6 +1647,33 @@ html{
   background-color: "#0007";
   padding: 1em;
 }
+.hero{
+  flex: 0 0 100%;
+}
+.hero-logo{
+  width: 50%;
+}
+ .hero-title{
+  display: block;
+  position: relative;
+  float: right;
+  font-size: 1em;
+  color: white;
+  top: calc(100% - 5.5em);
+  color: #FFFFFF;
+  word-wrap: break-word;
+  max-width: 50%;
+  /* background: #FFFFFF; */
+  /* background: #F7C1C1; */
+  text-shadow: 4px 3px 5px #333333;
+}
+.hero-title h4{
+  font-size: 1.75em;
+  margin-top:0;
+  margin-bottom: 0;
+  padding-right: 1em;
+  /* padding-bottom: 1em; */
+}
 .login-container a{
   color: orange;
 }
