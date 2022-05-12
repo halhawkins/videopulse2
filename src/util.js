@@ -13,6 +13,29 @@ export const getParameterByName = (name, url = window.location.href) => {
     return params.get(name);
 }
 
+export const supportsHover = () => {
+    let hover = false, anyHover = false;
+	if(window.matchMedia('(hover: hover)').matches){
+        hover = true;
+    }
+    
+      if(window.matchMedia('(hover: none)').matches){
+        hover = false;
+    }
+    
+      if(window.matchMedia('(any-hover: hover)').matches){
+        anyHover = true;
+    }
+    
+      if(window.matchMedia('(any-hover: none)').matches){
+        anyHover = false;
+    }  
+    if(hover || anyHover)
+        return true;
+    else
+        return false;    
+}
+
 export const removePageParam = (url) => {
     let newurl="",args,newargs;
     url = url.substr(url.indexOf('?'));

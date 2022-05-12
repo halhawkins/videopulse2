@@ -68,3 +68,25 @@
     height: 27px;
     /* left: 6em; */
   }
+  @media (max-width: 1200px){
+    .sb-box{
+      top: 3em;
+      left: 0;
+    }
+  }
+  @media not(any-hover: hover){
+    .sb-boxHover > .search-input {
+      width: 260px;
+  
+      padding: 0 6px;
+      margin-right: 1em;
+      /* left: 6em; */
+    }  
+    .sb-boxHover > .search-btn,
+    .search-input:focus + .search-btn,
+    .search-input:not(:placeholder-shown) + .search-btn{
+      background-color: #fff;
+      color: orange;
+      height: 27px;
+    }
+  }
