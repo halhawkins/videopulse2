@@ -824,6 +824,9 @@ html{
     color: orange;
     font-size: 1.6em;
   }
+  .tos-section a{
+    color: orange;
+  }
   .add-to-list img{
     height: 24px;
     width: 24px;

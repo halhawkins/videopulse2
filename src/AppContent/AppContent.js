@@ -26,6 +26,7 @@ import RegisterUser from "../RegisterUser/RegisterUser";
 import VerifyAccount from "../VerifyAccount/VerifyAccount";
 import AboutComponent from "../AboutComponent/AboutComponent";
 import TOSComponent from "../TOSComponent/TOSComponent";
+import PrivacyPolicy from "../PrivacyPolicy/PrivacyPolicy";
 
 class AppContent extends Component{
     constructor(props){
@@ -438,6 +439,17 @@ class AppContent extends Component{
                     <div className="right-side-container"></div>
                 </div>
             )
+        }
+        else if(this.state.page === "privacypolicy"){
+            return(
+                <div className="main-body-container">
+                    <div className="left-side-container"></div>
+                    <div className="middle-content-container content-room-at-the-top">
+                        <PrivacyPolicy />
+                    </div>
+                    <div className="right-side-container"></div>
+                </div>
+            );
         }
     }
 }
