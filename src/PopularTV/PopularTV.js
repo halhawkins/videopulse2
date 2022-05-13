@@ -65,7 +65,7 @@ class PopularTV extends Component{
                             return <MediaSummary overview={item.overview} size={"normal"} passThru={() => this.detailsPassThru("details",item.id,"tv")} key={"item"+item.id} mediaID={item.id} mediaType={"tv"} poster_path={item.poster_path} vote_average={item.vote_average} media_name={item.name}/>
                         })
                     }
-                    <PaginationControl contentPage="populartv" maxentries={10} pageNumberCallback={null} pageQueryVariable="page" q={null} currentPage={this.props.p} lastPage={this.state.totalPages} link={`?page=populartv&language=${this.language}&p=`} />
+                    <PaginationControl contentPage="populartv" maxentries={5} pageNumberCallback={null} pageQueryVariable="page" q={null} currentPage={this.props.p} lastPage={this.state.totalPages} link={`?page=populartv&language=${this.language}&p=`} />
                 </>
             );
     }

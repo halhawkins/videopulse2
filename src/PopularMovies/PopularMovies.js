@@ -59,7 +59,7 @@ class PopularMovies extends Component{
                             return <MediaSummary overview={item.overview} size={"normal"} passThru={() => this.detailsPassThru("details",item.id,"movie")} key={"item"+item.id} mediaID={item.id} mediaType={"movie"} poster_path={item.poster_path} vote_average={item.vote_average} media_name={item.title}/>
                         })
                     }
-                    <PaginationControl contentPage="popularmovies" maxentries={10} pageNumberCallback={null} pageQueryVariable="page" q={null} currentPage={this.props.p} lastPage={this.state.totalPages} link={`?page=popularmovies&language=${this.lang}&p=`} />
+                    <PaginationControl contentPage="popularmovies" maxentries={5} pageNumberCallback={null} pageQueryVariable="page" q={null} currentPage={this.props.p} lastPage={this.state.totalPages} link={`?page=popularmovies&language=${this.lang}&p=`} />
                 </>
             );
     }
