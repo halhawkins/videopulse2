@@ -134,6 +134,7 @@ class MediaSummary extends Component{
 
     render = () => {
         let addToListDialog,addToListButton;
+        let overview = this.props.overview === ""?"":this.props.overview;
         if(isLoggedIn()){
             addToListButton = <div onClick={this.handleManageListsButton} className="add-to-list-button" title="Add to list">+</div>
         }
@@ -149,23 +150,20 @@ class MediaSummary extends Component{
             poster_path = this.props.poster_path === null?default_poster:`${settings.backdrop_base}${this.props.poster_path}`;
         else
             poster_path = this.props.poster_path === null?default_poster:`${settings.sm_poster_base}${this.props.poster_path}`;
-        if(this.props.overview === "")
-            return <></>
-        else
-            return(
-                <div className="tvmovieitem" >
-                    {addToListDialog}
-                    {addToListButton}
-                        <div onClick={this.goToDetails} className="poster-div">
-                            <img onClick={this.goToDetails} alt="poster" src={poster_path}/>
-                        </div>
-                        <div onClick={this.goToDetails} className="tvmovieitem-desc">
-                            <h3 onClick={this.goToDetails}>{this.props.media_name}</h3><br />
-                            <em onClick={this.goToDetails}>{this.props.mediaType === 'tv'?"Series":this.props.mediaType}</em><p>
-                            {typeof this.props.overview !== 'undefined'?this.props.overview.length>80?this.props.overview.substr(0,80)+"...":this.props.overview:""}</p>
-                        </div>
-                </div>
-            );
+        return(
+            <div className="tvmovieitem" >
+                {addToListDialog}
+                {addToListButton}
+                    <div onClick={this.goToDetails} className="poster-div">
+                        <img onClick={this.goToDetails} alt="poster" src={poster_path}/>
+                    </div>
+                    <div onClick={this.goToDetails} className="tvmovieitem-desc">
+                        <h3 onClick={this.goToDetails}>{this.props.media_name}</h3><br />
+                        <em onClick={this.goToDetails}>{this.props.mediaType === 'tv'?"Series":this.props.mediaType}</em><p>
+                        {typeof this.props.overview !== 'undefined'?this.props.overview.length>80?this.props.overview.substr(0,80)+"...":this.props.overview:""}</p>
+                    </div>
+            </div>
+        );
     }
 }
 export default MediaSummary;
