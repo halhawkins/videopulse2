@@ -16,7 +16,7 @@ class PaginationControl extends Component{
     calculatePages = () => {
         this.control = [];
         this.startPageLink = 1;
-        this.endPageLink = 10;
+        this.endPageLink = 5;
         if(this.props.lastPage <= this.props.maxentries){
             this.startPageLink = 1;
             this.endPageLink = this.props.lastPage;

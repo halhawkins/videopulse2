@@ -56,7 +56,7 @@ class TrendingMedia extends Component{
                         })
                     }
                 
-                <PaginationControl contentPage="trending" maxentries={10} pageNumberCallback={null} pageQueryVariable="page" q={null} currentPage={this.props.p} lastPage={this.state.totalPages} link={`?page=trending&p=`} />
+                <PaginationControl contentPage="trending" maxentries={5} pageNumberCallback={null} pageQueryVariable="page" q={null} currentPage={this.props.p} lastPage={this.state.totalPages} link={`?page=trending&p=`} />
                 </>
             );
     }

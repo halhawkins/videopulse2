@@ -163,10 +163,10 @@ html{
 .tvmovieitem{
     position: relative;
     display: flex;
-    flex: 0 0 380px;
+    flex: 0 1 360px;
     align-items: stretch;
     flex-direction: column;
-    border: #00000000 2px solid;
+    /* border: #00000000 2px solid; */
     cursor: pointer;
     /* height: 400px; */
     /* background-color: deeppink; */
@@ -369,8 +369,9 @@ html{
     border: 1px solid orange;
     border-radius: 5px;
     background: #0000;
+    font-size: 1.2em;
     padding: .5em;
-    margin: .7em;
+    margin: .4em;
     height: 1.5em;
     -webkit-box-shadow: 3px 3px 12px 1px #000000; 
     box-shadow: 3px 3px 12px 1px #000000;
@@ -1465,7 +1466,7 @@ html{
   padding: 0.20em;
   background-color: #0007;
   border-radius: 80px;
-  right: 2.7em;
+  right: 0.5em;
   cursor: pointer;
   top: 0.7em;
   text-align: center;
@@ -1698,7 +1699,7 @@ html{
 }
 @media (max-width: 360px){
   .add-to-list-button{
-    right: 0.7em;
+    right: 1em;
   }
 }
 @media (min-width: 500px)
