@@ -141,7 +141,7 @@ class DiscoverResults extends Component{
                             return <MediaSummary overview={item.overview} size={"normal"} passThru={() => this.detailsPassThru("details",item.id,media_type)} key={"item"+item.id} mediaID={item.id} mediaType={media_type} poster_path={item.poster_path} vote_average={item.vote_average} media_name={media_type==="movie"?item.title:item.name}/>
                         })
                     }
-                    <PaginationControl contentPage="discover_results" maxentries={10} pageNumberCallback={null} pageQueryVariable="page" q={null} currentPage={getParameterByName('p')===null?1:this.getParameterByName('p')} lastPage={this.state.totalPages} link={removePageParam(window.location.search)+"&p="} />
+                    <PaginationControl contentPage="discover_results" maxentries={5} pageNumberCallback={null} pageQueryVariable="page" q={null} currentPage={getParameterByName('p')===null?1:this.getParameterByName('p')} lastPage={this.state.totalPages} link={removePageParam(window.location.search)+"&p="} />
                 </>
             );
     }

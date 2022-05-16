@@ -76,7 +76,7 @@ class SearchResults extends Component{
                             return <MediaSummary overview={item.overview} size={"normal"} passThru={() => this.detailsPassThru("details",item.id,"movie")} key={"item"+item.id} mediaID={item.id} mediaType={item.media_type} poster_path={item.media_type==="tv"||item.media_type==="movie"?item.poster_path:item.profile_path} vote_average={item.vote_average} media_name={item.media_type === 'tv'||item.media_type==='person'?item.name:item.title}/>
                         })
                     }
-                <PaginationControl contentPage="searchresults" maxentries={10} pageNumberCallback={null} pageQueryVariable="page" q={this.props.q} currentPage={this.state.data.page} lastPage={this.state.data.total_pages} link={`?page=search&language=${this.lang}&q=${getParameterByName("q")}&p=`} />
+                <PaginationControl contentPage="searchresults" maxentries={5} pageNumberCallback={null} pageQueryVariable="page" q={this.props.q} currentPage={this.state.data.page} lastPage={this.state.data.total_pages} link={`?page=search&language=${this.lang}&q=${getParameterByName("q")}&p=`} />
             </>
         )
     }
