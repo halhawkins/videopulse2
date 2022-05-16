@@ -63,7 +63,7 @@ class ReviewsSection extends Component{
                             console.log ("todo: Translate urls to hyperlinks in api proxy")
 
                             let content = item.content;
-                            // alert(JSON.stringify(Object.keys(item.author_details),null,10));
+
                             const imgStyle = {width:"48px"};
                             retval = (
                                 <div key={`reviews1-${i}`} className="review" id={"reviewDiv"+i}>

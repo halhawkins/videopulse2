@@ -57,11 +57,15 @@ class MovieCast extends Component {
         let scrollWidth = this.castPanel?.current?.scrollWidth;
 
         if(rl === 'r'){
-            if(this.castPanel.current.lastChild.offsetLeft+419 > this.scrollPos+panelWidth)
-                this.scrollPos = this.scrollPos += 419;
+            if(this.castPanel.current.lastChild.offsetLeft+419 > this.scrollPos+panelWidth){
+                if(this.scrollPos === 0)
+                    this.scrollPos = this.scrollPos += 432;
+                else
+                    this.scrollPos = this.scrollPos += 419;
+            }
         }
         if(rl === 'l'){
-            this.scrollPos = this.scrollPos-419<0?0:this.scrollPos -= 400+19;
+            this.scrollPos = this.scrollPos-419<0?0:this.scrollPos -= 419;
         }
         this.castPanel.current.scroll({left:this.scrollPos,behavior: "smooth"});
 
