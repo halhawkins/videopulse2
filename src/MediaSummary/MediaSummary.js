@@ -97,6 +97,7 @@ class MediaSummary extends Component{
         })
         .then(()=>{
             this.props.updateLists();
+            this.forceUpdate();  
         })
     }
 
@@ -136,7 +137,12 @@ class MediaSummary extends Component{
         let addToListDialog,addToListButton;
         let overview = this.props.overview === ""?"":this.props.overview;
         if(isLoggedIn()){
-            addToListButton = <div onClick={this.handleManageListsButton} className="add-to-list-button" title="Add to list">+</div>
+            if(typeof this.props.listItem !== "undefined"){
+                addToListButton = <div data-listid={this.props.listItem} onClick={this.removeFromList} className="add-to-list-button" title="Remove from list">x</div>
+            }
+            else{
+                addToListButton = <div onClick={this.handleManageListsButton} className="add-to-list-button" title="Add to list">+</div>
+            }
         }
         if(this.state.addToList){
             addToListDialog = <ListDialog poster_path={this.props.poster_path} media_name={this.props.media_name} closeDlg={this.closeAddToListDlg} mediaID={this.props.mediaID} mediaType={this.props.mediaType}/>
@@ -148,8 +154,9 @@ class MediaSummary extends Component{
         let poster_path;
         if(this.props.mediaType === 'episode')
             poster_path = this.props.poster_path === null?default_poster:`${settings.backdrop_base}${this.props.poster_path}`;
-        else
-            poster_path = this.props.poster_path === null?default_poster:`${settings.sm_poster_base}${this.props.poster_path}`;
+        else{
+            poster_path = this.props.poster_path === null?default_poster:this.props.mediaType === 'person'?`${settings.profile_base}${this.props.poster_path}`:`${settings.sm_poster_base}${this.props.poster_path}`;
+        }
         return(
             <div className="tvmovieitem" >
                 {addToListDialog}

@@ -1479,6 +1479,8 @@ html{
 }
 .add-to-list-button:hover{
   background-color: #000a;
+  color: white;
+  font: bold;
 }
 .list-delete-button:hover{
   background-color: #000a;
