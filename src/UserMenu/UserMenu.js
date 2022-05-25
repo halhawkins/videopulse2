@@ -96,21 +96,27 @@ class UserMenu extends Component{
     }
 
     render = () => {
+        let menu;
+        if(isLoggedIn()){
+            menu = <>
+            <div className="menu-item" onClick={this.showLists}><div className="lists-icon"></div><div className="menu-label">Lists</div></div>
+            <div className="menu-item" onClick={this.showFavorites}><div className="favorites-icon"></div><div className="menu-label">Favorites</div></div>
+            <div className="menu-item" onClick={this.profile}><div className="profile-icon"></div><div className="menu-label">Profile <em>{this.props.username}</em></div></div>
+            <div className="menu-item" onClick={this.logout}><div className="logout-icon"></div><div className="menu-label">Log out</div></div>
+        </>
+        }
+        else{
+            menu = <>
+            <div className="menu-item"><div className="login-icon"></div><div className="menu-label"><a href="?page=login">Log in</a></div></div>
+            <div className="menu-item"><div className="register-icon"></div><div className="menu-label"><a href="?page=register">Register</a></div></div>
+            {/* <div className="login-icon"></div><div className="menu-item"><a href="?page=login"><div className="menu-label">Log in</a></div> */}
+            {/* <div className="register-icon"></div><div className="menu-item"><a href="?page=register"><div className="menu-label">Register</a></div> */}
+        </>
+        }
         return (
             <div className="user-menu-popup">
                 <div className="user-menu-popup-inner">
-                { 
-                    isLoggedIn()?<>
-                        <div className="menu-item" onClick={this.showLists}>Lists</div>
-                        <div className="menu-item" onClick={this.showFavorites}>Favorites</div>
-                        <div className="menu-item" onClick={this.profile}>Profile <em>{this.props.username}</em></div>
-                        <div className="menu-item" onClick={this.logout}>Log out</div>
-                    </>:
-                    <>
-                        <div className="menu-item"><a href="?page=login">Log in</a></div>
-                        <div className="menu-item"><a href="?page=register">Register</a></div>
-                    </>
-                }
+                { menu }
                 </div>
             </div>
         )
