@@ -43,7 +43,7 @@ class MediaSummary extends Component{
         let episode = '', season = '';
         if(this.props.mediaType === 'episode'){
             episode = `&episode=${this.props.episode}`;
-            season = `&season=$${this.props.season}`;
+            season = `&season=${this.props.season}`;
         }
         window.location = `?page=details&itemID=${this.props.mediaID}&itemType=${this.props.mediaType}${season}${episode}`;
     }

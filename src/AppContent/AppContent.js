@@ -176,7 +176,7 @@ class AppContent extends Component{
                 this.episodeSeason = this.getParameterByName("season");
                 this.episode = this.getParameterByName("episode");
                 this.list_id = this.getParameterByName("list_id");
-
+                console.log(`Season = ${this.episodeSeason} episode = ${this.episode}`);
                 break;
             case "discover_results":
                 let with_cast = this.getParameterByName('with_cast').length===0?"&with_cast=":`&with_cast=${this.getParameterByName('with_cast')}`;
